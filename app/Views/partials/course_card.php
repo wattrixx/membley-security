@@ -10,12 +10,15 @@ $courseStatusLabel = $course['status_label'] ?? match ($course['status']) {
     <?php if ($courseImagePath !== null): ?>
         <img class="content-card-image"
              src="<?= esc(base_url($courseImagePath), 'attr') ?>"
-             alt=""
+             alt="<?= esc($course['featured_image_alt'] ?? '', 'attr') ?>"
              loading="lazy"
              decoding="async">
     <?php endif; ?>
     <div class="content-card-body">
         <span class="content-status"><?= esc($courseStatusLabel) ?></span>
+        <?php if (! empty($course['category_name'])): ?>
+            <span class="content-date"><?= esc($course['category_name']) ?></span>
+        <?php endif; ?>
         <h3>
             <a href="<?= esc(base_url('college/courses/' . rawurlencode($course['slug'])), 'attr') ?>">
                 <?= esc($course['title']) ?>

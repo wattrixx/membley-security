@@ -69,3 +69,46 @@ models, views or publication rules.
 - `composer test -- --no-coverage` ran five tests: three passed and two
   database tests errored because the active PHP runtime lacks `sqlite3`.
   No rate-limit exhaustion test was performed.
+
+### Milestone 5 — CMS content management
+
+- Applied `2026-11-13-111500_AddCmsPublishingFields` as migration batch 3;
+  migration status and route registration were checked.
+- Browser-tested public course, news, About-page and announcement publication:
+  drafts and future/expired announcements stayed hidden; publishing exposed
+  eligible records; reverting the page to draft restored its existing
+  controlled template.
+- Confirmed article markup-like text renders escaped as text, verified course
+  fee rendering is gated, and checked a featured image and alternative text.
+- Confirmed a valid JPEG upload succeeds, a text file renamed `.jpg` is
+  rejected, media referenced by a course cannot be deleted, and an
+  unreferenced upload can be deleted.
+- The oversized-file attempt was rejected. The local PHP configuration uses
+  `upload_max_filesize=2M` and `post_max_size=8M`, so PHP rejected it before
+  the application's 5 MB limit; the controller now reports the server limit
+  explicitly. Configure PHP to at least 5 MB to test the application-level
+  boundary.
+- A draft news preview returned HTTP 200 without creating a database record;
+  script-like content was displayed as escaped text.
+- Direct URL role checks returned HTTP 200 for Admissions Officer course
+  access and HTTP 403 for pages and security enquiries. Content Manager
+  pages/news/announcements/media returned 200; courses, administrator
+  accounts and security enquiries returned 403. Security Services Officer
+  course and college-application access returned 403; its not-yet-implemented
+  security-enquiry route returned 501 without records.
+- Public homepage, course listing, news listing, About page and admin login
+  returned HTTP 200. The admin dashboard had no horizontal overflow at both
+  390px and 1440px viewport widths.
+- `php -l` passed for all 118 PHP files under `app/` and `tests/`.
+  `composer validate --no-check-publish` passed. Migration status confirms
+  the CMS migration in batch 3, and `php spark routes` lists its protected
+  CRUD, preview and media routes.
+- PHPUnit ran five tests: three passed and two errored because the PHP runtime
+  lacks `sqlite3` (`ExampleDatabaseTest::testModelFindAll` and
+  `ExampleDatabaseTest::testSoftDeleteLeavesRow`). The existing database
+  tests could not be completed.
+- The test course, post, announcement, page, media, audit entries, temporary
+  administrator accounts and upload fixtures were removed. The corresponding
+  content, media, user and audit tables were confirmed empty afterward.
+- The changed files use CRLF line endings; whitespace validation passed with
+  `git -c core.whitespace=cr-at-eol diff --check`.

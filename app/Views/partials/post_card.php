@@ -3,11 +3,14 @@
     <?php if ($postImagePath !== null): ?>
         <img class="content-card-image"
              src="<?= esc(base_url($postImagePath), 'attr') ?>"
-             alt=""
+             alt="<?= esc($post['featured_image_alt'] ?? '', 'attr') ?>"
              loading="lazy"
              decoding="async">
     <?php endif; ?>
     <div class="content-card-body">
+        <?php if (! empty($post['category'])): ?>
+            <span class="content-status"><?= esc($post['category']) ?></span>
+        <?php endif; ?>
         <time class="content-date" datetime="<?= esc($post['published_at'], 'attr') ?>">
             <?= esc(date('F j, Y', strtotime($post['published_at']))) ?>
         </time>

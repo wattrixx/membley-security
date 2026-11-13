@@ -41,24 +41,19 @@ $roleLabels = array_map(
             <?php endif; ?>
 
             <?php if ($currentUser->can('content.pages.view')): ?>
-                <span class="admin-nav-link is-disabled" aria-disabled="true">
-                    Pages <small>Milestone 5</small>
-                </span>
+                <a class="admin-nav-link" href="<?= url_to('admin.cms.pages') ?>">Pages</a>
             <?php endif; ?>
             <?php if ($currentUser->can('content.news.view')): ?>
-                <span class="admin-nav-link is-disabled" aria-disabled="true">
-                    News and announcements <small>Milestone 5</small>
-                </span>
+                <a class="admin-nav-link" href="<?= url_to('admin.cms.news') ?>">News &amp; blog</a>
+            <?php endif; ?>
+            <?php if ($currentUser->can('content.announcements.view')): ?>
+                <a class="admin-nav-link" href="<?= url_to('admin.cms.announcements') ?>">Announcements</a>
             <?php endif; ?>
             <?php if ($currentUser->can('content.media.view')): ?>
-                <span class="admin-nav-link is-disabled" aria-disabled="true">
-                    Media library <small>Milestone 5</small>
-                </span>
+                <a class="admin-nav-link" href="<?= url_to('admin.cms.media') ?>">Media library</a>
             <?php endif; ?>
             <?php if ($currentUser->can('college.courses.view')): ?>
-                <span class="admin-nav-link is-disabled" aria-disabled="true">
-                    Courses <small>Later milestone</small>
-                </span>
+                <a class="admin-nav-link" href="<?= url_to('admin.cms.courses') ?>">Courses</a>
             <?php endif; ?>
             <?php if ($currentUser->can('college.applications.view')): ?>
                 <span class="admin-nav-link is-disabled" aria-disabled="true">

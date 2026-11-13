@@ -127,6 +127,22 @@
     </div>
 </section>
 
+<?php if ($announcements !== []): ?>
+    <section class="section section-paper" id="announcements">
+        <div class="container">
+            <div class="section-heading">
+                <span class="eyebrow">Announcements</span>
+                <h2>Important updates</h2>
+            </div>
+            <div class="announcement-list">
+                <?php foreach ($announcements as $announcement): ?>
+                    <?= view('partials/announcement_card', ['announcement' => $announcement]) ?>
+                <?php endforeach; ?>
+            </div>
+        </div>
+    </section>
+<?php endif; ?>
+
 <section class="section" id="about">
     <div class="container intro-grid">
         <div class="intro-mark">

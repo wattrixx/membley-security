@@ -28,6 +28,13 @@ The core, Shield authentication and Settings migrations are applied in the
 current development database. Review and apply pending migrations before
 running the application in a new environment.
 
+The media upload directory is `public/uploads/media/`. The web-server process
+needs permission to create files there. Keep its non-executable server rules
+enabled; see [Deployment](DEPLOYMENT.md) before enabling uploads on a host.
+To use the full 5 MB application upload limit, configure PHP with
+`upload_max_filesize=5M` and `post_max_size` greater than 5 MB (for example
+`6M`). PHP may impose a lower server-side limit otherwise.
+
 To provision the first Super Admin in an environment with no existing Super
 Admin, provide a strong password through the process environment. Avoid putting
 the password in shell history or source files:

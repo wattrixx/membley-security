@@ -8,6 +8,7 @@ use CodeIgniter\HTTP\IncomingRequest;
 use CodeIgniter\HTTP\RequestInterface;
 use CodeIgniter\HTTP\ResponseInterface;
 use Psr\Log\LoggerInterface;
+use App\Models\MediaModel;
 
 /**
  * BaseController provides a convenient place for loading components
@@ -45,5 +46,61 @@ abstract class BaseController extends Controller
 
         // Preload any models, libraries, etc, here.
         // $this->session = service('session');
+    }
+
+    /**
+     * @param list<array<string, mixed>> $records
+     * @return list<array<string, mixed>>
+     */
+    protected function addImagePaths(array $records): array
+    {
+        foreach ($records as $index => $record) {
+            $path = $this->publicImagePath($record['featured_image'] ?? null);
+            $records[$index]['featured_image_path'] = $path;
+            $records[$index]['featured_image_alt'] = $path === null
+                ? ''
+                : $this->publicImageAlt($path);
+        }
+
+        return $records;
+    }
+
+    protected function publicImagePath(?string $path): ?string
+    {
+        $path = ltrim(trim((string) $path), '/');
+
+        if (
+            $path === ''
+            || (! str_starts_with($path, 'assets/images/') && ! str_starts_with($path, 'uploads/'))
+        ) {
+            return null;
+        }
+
+        foreach (explode('/', $path) as $segment) {
+            if (
+                $segment === ''
+                || $segment === '.'
+                || $segment === '..'
+                || preg_match('/[^A-Za-z0-9._-]/', $segment) === 1
+            ) {
+                return null;
+            }
+        }
+
+        if (! in_array(strtolower(pathinfo($path, PATHINFO_EXTENSION)), ['jpg', 'jpeg', 'png', 'webp'], true)) {
+            return null;
+        }
+
+        return is_file(FCPATH . str_replace('/', DIRECTORY_SEPARATOR, $path)) ? $path : null;
+    }
+
+    protected function imageAlt(string $path): string
+    {
+        $record = (new MediaModel())
+            ->select('alt_text')
+            ->where('file_path', $path)
+            ->first();
+
+        return trim((string) ($record['alt_text'] ?? ''));
     }
 }

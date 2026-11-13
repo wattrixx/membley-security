@@ -12,16 +12,17 @@ Items remain outstanding unless marked implemented in the current source.
   claims. Keep proposed fees and internal planning notes private.
 - Review image choices and final branding with the client.
 
-## CMS foundation
+## CMS follow-up
 
 - Test authentication and role restrictions in the target deployment
   environment; configure a verified email sender before enabling password
   reset or other email flows.
-- Add controlled CRUD workflows for pages, courses, posts, announcements and
-  site settings; public read-only models now exist for pages, courses and posts.
-- Implement media upload and management with validated file handling.
+- Verify the public media directory's non-executable rules on the cPanel host;
+  move uploads outside the document root if Apache protections are unavailable.
+- Decide whether to add managed website settings; settings CRUD is not part of
+  the completed content modules.
 - Add enquiry and application workflows, statuses and administrator views.
-- Add foreign-key and status-integrity decisions to reviewed migrations.
+- Review foreign-key and status-integrity constraints before a future migration.
 
 ## Quality and release
 

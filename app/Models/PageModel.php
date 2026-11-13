@@ -9,12 +9,14 @@ class PageModel extends Model
     protected $table = 'pages';
     protected $primaryKey = 'id';
     protected $returnType = 'array';
+    protected $useTimestamps = true;
     protected $allowedFields = [
         'title',
         'slug',
         'content',
         'meta_title',
         'meta_description',
+        'featured_image',
         'status',
         'published_at',
     ];

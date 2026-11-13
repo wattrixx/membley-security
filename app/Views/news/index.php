@@ -12,12 +12,28 @@
 
 <section class="section">
     <div class="container">
-        <?php if ($posts === []): ?>
+        <?php if ($announcements !== []): ?>
+            <div class="section-heading">
+                <span class="eyebrow">Announcements</span>
+                <h2>Important updates</h2>
+            </div>
+            <div class="announcement-list">
+                <?php foreach ($announcements as $announcement): ?>
+                    <?= view('partials/announcement_card', ['announcement' => $announcement]) ?>
+                <?php endforeach; ?>
+            </div>
+        <?php endif; ?>
+
+        <?php if ($posts === [] && $announcements === []): ?>
             <div class="empty-state">
                 <h2>No news articles are published yet.</h2>
                 <p>Check back for confirmed news and announcements.</p>
             </div>
-        <?php else: ?>
+        <?php elseif ($posts !== []): ?>
+            <div class="section-heading">
+                <span class="eyebrow">News and articles</span>
+                <h2>Latest stories</h2>
+            </div>
             <div class="content-grid">
                 <?php foreach ($posts as $post): ?>
                     <?= view('partials/post_card', ['post' => $post]) ?>

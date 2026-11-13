@@ -8,6 +8,7 @@
             <span class="eyebrow">News and Updates</span>
             <h1><?= esc($post['title']) ?></h1>
             <div class="article-byline">
+                <?php if (! empty($post['category'])): ?><span><?= esc($post['category']) ?></span><?php endif; ?>
                 <time datetime="<?= esc($post['published_at'], 'attr') ?>">
                     <?= esc(date('F j, Y', strtotime($post['published_at']))) ?>
                 </time>
@@ -23,7 +24,7 @@
             <?php if ($post['featured_image_path'] !== null): ?>
                 <img class="detail-image"
                      src="<?= esc(base_url($post['featured_image_path']), 'attr') ?>"
-                     alt=""
+                     alt="<?= esc($post['featured_image_alt'], 'attr') ?>"
                      loading="lazy"
                      decoding="async">
             <?php endif; ?>

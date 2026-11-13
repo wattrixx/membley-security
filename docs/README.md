@@ -25,8 +25,7 @@ they differ, prefer the implementation status recorded here.
 
 ## Current milestone
 
-Milestone 4 adds CodeIgniter Shield session authentication, server-enforced
-administrator permissions, a role-aware dashboard and Super Admin account
-management. The public website remains available. Content CRUD, media uploads,
-public enquiry/application forms and their administration workflows are not
-implemented yet.
+Milestone 5 adds permission-gated management for courses, news, fixed public
+pages, announcements and image media. Public models expose only published
+content. Applications, public enquiry forms and their administration workflows
+remain future work.

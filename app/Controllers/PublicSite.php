@@ -3,6 +3,7 @@
 namespace App\Controllers;
 
 use App\Models\CourseModel;
+use App\Models\AnnouncementModel;
 use App\Models\PageModel;
 use App\Models\PostModel;
 use CodeIgniter\Exceptions\PageNotFoundException;
@@ -79,7 +80,11 @@ class PublicSite extends BaseController
         }
 
         $course['featured_image_path'] = $this->publicImagePath($course['featured_image'] ?? null);
+        $course['featured_image_alt'] = $course['featured_image_path'] === null
+            ? ''
+            : $this->imageAlt($course['featured_image_path']);
         $course['status_label'] = $this->courseStatusLabel($course['status']);
+        $course['fee_display'] = $this->verifiedFee($course);
 
         return $this->renderPage(
             'courses/show',
@@ -93,6 +98,9 @@ class PublicSite extends BaseController
     {
         $postModel = new PostModel();
         $posts = $this->addImagePaths($postModel->paginatePublicPosts());
+        $announcements = $this->addImagePaths(
+            (new AnnouncementModel())->findPublicAnnouncements(10),
+        );
 
         return $this->renderPage(
             'news/index',
@@ -100,6 +108,7 @@ class PublicSite extends BaseController
             'Published news and announcements from Membley Security Group.',
             [
                 'posts' => $posts,
+                'announcements' => $announcements,
                 'pager' => $postModel->pager,
             ],
         );
@@ -114,6 +123,9 @@ class PublicSite extends BaseController
         }
 
         $post['featured_image_path'] = $this->publicImagePath($post['featured_image'] ?? null);
+        $post['featured_image_alt'] = $post['featured_image_path'] === null
+            ? ''
+            : $this->imageAlt($post['featured_image_path']);
         $metaTitle = trim((string) ($post['meta_title'] ?? ''));
         $metaDescription = trim((string) ($post['meta_description'] ?? ''));
 
@@ -181,6 +193,10 @@ class PublicSite extends BaseController
             return $this->renderPage($view, $pageTitle, $metaDescription);
         }
 
+        $page['featured_image_path'] = $this->publicImagePath($page['featured_image'] ?? null);
+        $page['featured_image_alt'] = $page['featured_image_path'] === null
+            ? ''
+            : $this->imageAlt($page['featured_image_path']);
         $storedTitle = trim((string) ($page['meta_title'] ?? ''));
         $storedDescription = trim((string) ($page['meta_description'] ?? ''));
 
@@ -192,52 +208,6 @@ class PublicSite extends BaseController
         );
     }
 
-    /**
-     * @param list<array<string, mixed>> $records
-     * @return list<array<string, mixed>>
-     */
-    private function addImagePaths(array $records): array
-    {
-        foreach ($records as $index => $record) {
-            $records[$index]['featured_image_path'] = $this->publicImagePath(
-                $record['featured_image'] ?? null,
-            );
-        }
-
-        return $records;
-    }
-
-    private function publicImagePath(?string $path): ?string
-    {
-        $path = ltrim(trim((string) $path), '/');
-
-        if (
-            $path === ''
-            || (!str_starts_with($path, 'assets/images/') && !str_starts_with($path, 'uploads/'))
-        ) {
-            return null;
-        }
-
-        $segments = explode('/', $path);
-
-        foreach ($segments as $segment) {
-            if (
-                $segment === ''
-                || $segment === '.'
-                || $segment === '..'
-                || preg_match('/[^A-Za-z0-9._-]/', $segment) === 1
-            ) {
-                return null;
-            }
-        }
-
-        if (!in_array(strtolower(pathinfo($path, PATHINFO_EXTENSION)), ['jpg', 'jpeg', 'png', 'webp'], true)) {
-            return null;
-        }
-
-        return is_file(FCPATH . str_replace('/', DIRECTORY_SEPARATOR, $path)) ? $path : null;
-    }
-
     private function courseStatusLabel(string $status): string
     {
         return match ($status) {
@@ -245,6 +215,18 @@ class PublicSite extends BaseController
             'proposed' => 'Proposed',
             default => 'In development',
         };
+    }
+
+    /**
+     * @param array<string, mixed> $course
+     */
+    private function verifiedFee(array $course): ?string
+    {
+        if (empty($course['fee_verified']) || $course['fee'] === null || $course['fee'] === '') {
+            return null;
+        }
+
+        return number_format((float) $course['fee'], 2, '.', ',');
     }
 
     /**

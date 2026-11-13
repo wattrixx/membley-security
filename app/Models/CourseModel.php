@@ -10,6 +10,7 @@ class CourseModel extends Model
     protected $table = 'courses';
     protected $primaryKey = 'id';
     protected $returnType = 'array';
+    protected $useTimestamps = true;
     protected $allowedFields = [
         'category_id',
         'title',
@@ -18,10 +19,12 @@ class CourseModel extends Model
         'description',
         'duration',
         'fee',
+        'fee_verified',
         'requirements',
         'outcomes',
         'featured_image',
         'status',
+        'publication_status',
         'is_featured',
         'published_at',
     ];
@@ -60,7 +63,7 @@ class CourseModel extends Model
     public function findPublicCourseBySlug(string $slug): ?array
     {
         $course = $this->publicBuilder()
-            ->where('slug', $slug)
+            ->where('courses.slug', $slug)
             ->get()
             ->getRowArray();
 
@@ -70,7 +73,10 @@ class CourseModel extends Model
     private function publicBuilder(): BaseBuilder
     {
         return $this->builder()
-            ->whereIn('status', ['available', 'proposed', 'development'])
-            ->where('published_at <=', date('Y-m-d H:i:s'));
+            ->select('courses.*, course_categories.name AS category_name')
+            ->join('course_categories', 'course_categories.id = courses.category_id', 'left')
+            ->where('courses.publication_status', 'published')
+            ->whereIn('courses.status', ['available', 'proposed', 'development'])
+            ->where('courses.published_at <=', date('Y-m-d H:i:s'));
     }
 }

@@ -6,8 +6,8 @@
   must remain outside the public directory.
 - `.env` is ignored by Git. Never commit production credentials or encryption
   keys.
-- Public content has no POST forms or upload handlers. The admin area is
-  separate from public routes.
+- Public content has no submission forms. CMS image uploads are available only
+  to authorized administrators through protected POST routes.
 - Database-backed page text, course fields, article content, titles, dates and
   metadata are escaped at render time. Article/page content is rendered as
   plain text with line breaks; stored markup is not trusted.
@@ -22,6 +22,10 @@
 - Every protected admin route requires a Shield session and an explicit
   permission filter. Admissions and Security Services permissions are
   separate; direct requests to a restricted route are denied server-side.
+- CMS routes enforce role permissions server-side. Admissions Officers manage
+  courses; Content Managers manage pages, news, announcements and media;
+  Security Services Officers cannot access these modules. No workflow for
+  confidential security-service enquiries or college applications exists yet.
 - CSRF protection is enabled globally in session mode. State-changing admin
   operations are POST-only.
 - Shield's `auth-rates` filter limits authentication-route requests to 10 per
@@ -38,20 +42,29 @@
   and audit record are committed together. Administrators cannot change their
   own role/status, and the last active Super Admin cannot be demoted or
   deactivated.
+- CMS create/update/delete actions are recorded in the existing audit log.
+- Image uploads accept JPEG, PNG and WebP only, with matching extension and
+  server-detected MIME type, a 5 MB size limit, and bounded image dimensions.
+  Names are generated from random bytes; client filenames are sanitized.
+  Uploads are stored in `public/uploads/media/`, with an Apache `.htaccess`
+  rule denying script-like extensions. Referenced media cannot be deleted.
+  This Apache protection has not been verified on the production host; the
+  directory must not permit execution or unsafe MIME handling.
 - The first Super Admin is created by a CLI-only provisioning command using
   an externally supplied process environment password. No default credentials
   are hardcoded. Email/reset flows are not configured until a verified sender
   is provided.
-- No CMS uploads or public enquiry/application forms exist yet, so their
-  validation and storage controls remain future work.
+- Public enquiry/application forms and their rate limits/spam protections
+  remain future work.
 
 ## Before adding forms or CMS routes
 
 1. Keep permission checks on every new route and protected operation; do not
    rely on hiding navigation items.
 2. Validate request data on the server and escape output at render time.
-3. Validate uploads by content, size and allowed type; store them outside
-   executable/public paths where possible.
+3. Keep upload validation in place and verify server configuration denies
+   executable content in the public media directory. Prefer storage outside
+   the document root if the deployment supports safe controlled delivery.
 4. Add rate limiting and spam protections to public forms.
 5. Log administrative changes without storing unnecessary sensitive data.
 

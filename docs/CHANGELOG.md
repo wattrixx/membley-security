@@ -49,3 +49,19 @@
   forms were implemented.
 - Updated the canonical architecture, database, security, setup, deployment,
   module, testing and backlog documentation.
+
+## 2026-11-13 — Milestone 5
+
+- Added one additive migration for course publication/verified-fee fields,
+  post categories and optional page/announcement featured images; no tables
+  were duplicated.
+- Added role-protected course, news, fixed-page, announcement and media
+  management with search/filtering, pagination, draft/published/archived
+  states, scheduling, and previews where applicable.
+- Connected published courses, news, fixed pages and time-valid announcements
+  to public pages; output remains escaped plain text.
+- Added validated JPEG/PNG/WebP media uploads with generated filenames,
+  reference-protected deletion, and audit records.
+- Verified role-specific route access in the local browser; full test and
+  deployment-host upload checks remain subject to the limitations recorded in
+  [Testing](TESTING.md) and [Backlog](BACKLOG.md).

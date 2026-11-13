@@ -15,6 +15,14 @@ before scheduling production deployment.
 - Set `CI_ENVIRONMENT=production`, enable HTTPS and disable public debug output.
 - Ensure the configured writable directories are writable by the application
   user but are not directly served as executable content.
+- The CMS stores images in `public/uploads/media/`. Confirm that the host uses
+  Apache rules from that directory's `.htaccess` (including `AllowOverride`
+  support), denies script execution and serves only validated image files.
+  If the host does not honor these rules, configure an equivalent server-level
+  policy or move media outside the document root before enabling uploads.
+- Set PHP's `upload_max_filesize` to at least `5M` and `post_max_size` to a
+  value above `5M`; lower PHP limits reject files before the application can
+  apply its own size validation.
 
 ## Release checklist
 
@@ -32,6 +40,7 @@ before scheduling production deployment.
 7. Confirm the public document root does not expose application or environment
    files.
 
-The authentication/dashboard foundation is implemented, but content CRUD,
-uploads, public forms and their administration workflows are not. Email-based
-password reset is not configured pending a verified production sender.
+The public website, admin authentication and CMS content/media modules are
+implemented. Applications, public enquiry forms and their administration
+workflows are not. Email-based password reset is not configured pending a
+verified production sender.

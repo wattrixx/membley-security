@@ -525,6 +525,8 @@ a.admin-nav-link:focus-visible {
 
 .admin-form input,
 .admin-form select,
+.admin-form textarea,
+.admin-form input[type="file"],
 .admin-inline-form select {
     width: 100%;
     min-height: 43px;
@@ -533,6 +535,204 @@ a.admin-nav-link:focus-visible {
     background: var(--brand-white);
     border: 1px solid #c9c7c1;
     border-radius: 3px;
+}
+
+.admin-form textarea {
+    min-height: 100px;
+    resize: vertical;
+}
+
+.admin-form input[type="checkbox"] {
+    width: 18px;
+    min-height: 18px;
+    padding: 0;
+    accent-color: var(--brand-gold);
+}
+
+.admin-form-wide {
+    width: min(100%, 850px);
+}
+
+.admin-form-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 1rem;
+}
+
+.admin-form-grid > div {
+    display: grid;
+    align-content: start;
+    gap: .65rem;
+}
+
+.admin-form-hint-inline {
+    color: var(--muted);
+    font-size: .75rem;
+    font-weight: 400;
+}
+
+.admin-checkbox-label {
+    display: flex;
+    align-items: flex-start;
+    gap: .65rem;
+    color: var(--text);
+    font-size: .85rem;
+    font-weight: 500 !important;
+}
+
+.admin-checkbox-label input {
+    flex: 0 0 auto;
+}
+
+.admin-filter-form {
+    display: grid;
+    grid-template-columns: minmax(170px, 1fr) minmax(140px, .7fr) auto;
+    align-items: end;
+    gap: .6rem;
+    margin-bottom: 1.2rem;
+    padding: 1rem;
+    background: var(--brand-white);
+    border: 1px solid var(--line);
+    border-radius: 5px;
+}
+
+.admin-filter-form label {
+    grid-row: 1;
+    color: var(--muted);
+    font-size: .76rem;
+    font-weight: 700;
+}
+
+.admin-filter-form input,
+.admin-filter-form select {
+    min-width: 0;
+    min-height: 42px;
+    padding: .5rem .65rem;
+    color: var(--text);
+    background: var(--brand-white);
+    border: 1px solid #c9c7c1;
+    border-radius: 3px;
+}
+
+.admin-filter-form label:nth-of-type(2) {
+    grid-column: 2;
+}
+
+.admin-filter-form input {
+    grid-column: 1;
+    grid-row: 2;
+}
+
+.admin-filter-form select {
+    grid-column: 2;
+    grid-row: 2;
+}
+
+.admin-filter-form button {
+    grid-column: 3;
+    grid-row: 2;
+}
+
+.admin-media-upload {
+    width: min(100%, 650px);
+    margin-bottom: 1.5rem;
+}
+
+.admin-media-upload h2 {
+    margin: 0;
+    color: var(--brand-ink);
+    font-family: Georgia, "Times New Roman", serif;
+    font-size: 1.5rem;
+    font-weight: 500;
+}
+
+.admin-media-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(min(100%, 230px), 1fr));
+    gap: 1rem;
+}
+
+.admin-media-card {
+    overflow: hidden;
+    background: var(--brand-white);
+    border: 1px solid var(--line);
+    border-radius: 5px;
+}
+
+.admin-media-card > img {
+    display: block;
+    width: 100%;
+    aspect-ratio: 4 / 3;
+    object-fit: cover;
+    background: var(--brand-paper);
+}
+
+.admin-media-details {
+    display: grid;
+    gap: .55rem;
+    padding: .85rem;
+}
+
+.admin-media-details > strong {
+    overflow-wrap: anywhere;
+    font-size: .85rem;
+}
+
+.admin-media-details > small {
+    color: var(--muted);
+    font-size: .72rem;
+}
+
+.admin-media-alt-form {
+    gap: .4rem;
+}
+
+.admin-media-alt-form label {
+    font-size: .75rem;
+}
+
+.admin-preview-card {
+    max-width: 900px;
+    padding: clamp(1.2rem, 3vw, 2rem);
+    background: var(--brand-white);
+    border: 1px solid var(--line);
+    border-radius: 5px;
+}
+
+.admin-preview-image {
+    display: block;
+    width: min(100%, 700px);
+    max-height: 440px;
+    margin-bottom: 1.25rem;
+    object-fit: cover;
+}
+
+.admin-preview-metadata {
+    display: flex;
+    flex-wrap: wrap;
+    gap: .7rem 1.5rem;
+    margin: 0 0 1.25rem;
+}
+
+.admin-preview-metadata > div {
+    min-width: 130px;
+}
+
+.admin-preview-metadata dt {
+    color: var(--muted);
+    font-size: .74rem;
+    font-weight: 700;
+}
+
+.admin-preview-metadata dd {
+    margin: .15rem 0 0;
+    color: var(--brand-ink);
+}
+
+.admin-preview-copy {
+    margin-bottom: 1.5rem;
+    line-height: 1.8;
+    overflow-wrap: anywhere;
 }
 
 .admin-inline-form select {
@@ -694,6 +894,23 @@ a.admin-nav-link:focus-visible {
     .admin-heading-row {
         align-items: flex-start;
         flex-direction: column;
+    }
+
+    .admin-form-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .admin-filter-form {
+        grid-template-columns: 1fr;
+    }
+
+    .admin-filter-form label,
+    .admin-filter-form label:nth-of-type(2),
+    .admin-filter-form input,
+    .admin-filter-form select,
+    .admin-filter-form button {
+        grid-column: 1;
+        grid-row: auto;
     }
 }
 

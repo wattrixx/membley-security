@@ -5,8 +5,9 @@
 The migration `2026-11-11-104518_CreateMembleyCoreTables` is applied in the
 configured MariaDB database as batch 1. It creates eleven application tables.
 CodeIgniter Shield's authentication migration and CodeIgniter Settings'
-migrations are applied in batch 2. The database also has CodeIgniter's
-`migrations` table.
+migrations are applied in batch 2. The additive
+`2026-11-13-111500_AddCmsPublishingFields` migration is applied in batch 3.
+The database also has CodeIgniter's `migrations` table.
 
 The public website reads published content from `pages`, `courses` and
 `posts`. The admin foundation uses Shield's user and authorization tables and
@@ -40,19 +41,30 @@ The migration adds an auto-incrementing `BIGINT` primary key and nullable
 unique slugs for categories, courses, posts, announcements and pages; unique
 application numbers; and the indexes declared in the migration.
 
+The Milestone 5 migration adds `courses.publication_status` (default `draft`)
+and `courses.fee_verified` (default false), `posts.category`, and optional
+`featured_image` paths to `pages` and `announcements`. It does not create
+tables. Existing courses with an allowed availability status and a past
+publication date are marked published to preserve their prior public
+visibility.
+
 ## Public-content rules
 
 - Fixed pages (`about`, `college`, `security-services`) are overridden only by
   a matching `pages` row with `status = 'published'`, a non-future
   `published_at`, and non-empty content. Unpublished rows are ignored.
-- Courses are visible only for `available`, `proposed` or `development`
-  statuses with `published_at` at or before the current time. Drafts, unknown
-  statuses and undated/future rows are not exposed. The default `development`
-  status alone does not publish a course.
-- News articles require `status = 'published'` and a non-future
-  `published_at`. Detail routes apply the same filter as listing routes.
+- Courses require `publication_status = 'published'`, a non-future
+  `published_at`, and an availability status of `available`, `proposed` or
+  `development`. Draft, archived, unknown, undated and future courses are not
+  exposed. Course fees are rendered only when `fee_verified` is true.
+- News articles and announcements require published state and a non-future
+  publication date. Announcement start/end dates further limit visibility.
+  Detail routes use the same publication rules as listings.
+- Fixed-page editor writes are restricted to `about`, `college` and
+  `security-services`; the public template only overrides those known routes
+  with published content.
 - Queries use CodeIgniter Models and Query Builder predicates; route slugs are
-  bound as values. Fees are not rendered from course records.
+  bound as values. Database text is rendered as escaped plain text, not HTML.
 - Featured images are rendered only for existing local `assets/images/` or
   `uploads/` files with an approved image extension.
 
@@ -64,8 +76,14 @@ application numbers; and the indexes declared in the migration.
 - The core application migration does not declare foreign-key constraints.
   `audit_logs.user_id` remains an optional, application-level reference to a
   Shield user.
-- Status values are stored as strings; application-level validation and
-  allowed-state transitions are not implemented yet.
+- Status values are stored as strings and validated by the content-management
+  controllers. Foreign-key constraints are not declared by the core schema.
+
+Media rows reference generated filenames under `public/uploads/media/`.
+Uploaded files are validated before insertion and references from courses,
+posts, pages and announcements prevent deletion. Files remain public web
+assets, so production web-server rules must prevent execution and be verified
+on the deployment host.
 
 ## Administrator identity and audit
 

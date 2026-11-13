@@ -17,26 +17,30 @@ application.
 4. `CourseModel`, `PostModel` and `PageModel` query only content that meets
    the public publication rules.
 5. `/admin/*` routes use Shield's session filter and explicit permission
-   filters before calling the admin controllers. The admin controllers render
-   the dashboard, login, forbidden and administrator-account views.
+   filters before calling the admin controllers. CMS controllers validate
+   writes, use the existing content tables, and audit mutations.
 6. Public views extend `app/Views/layouts/main.php`; admin views extend
    `app/Views/layouts/admin.php`. The separate admin layout provides
    role-filtered navigation, sign-out and responsive menu behavior.
+7. CMS-managed media is validated and stored with generated names in
+   `public/uploads/media/`; media records and referenced images are managed
+   through the existing `media` table.
 
 ## Current structure
 
 - `app/Controllers/`: public controllers plus admin authentication,
-  dashboard, administrator management and explicitly unimplemented module
-  endpoints.
+  dashboard, administrator management, CMS content controllers and
+  role-protected future-module endpoints.
 - `app/Commands/`: the CLI-only first-Super-Admin provisioning command.
-- `app/Models/`: read-only public queries and the audit-log model used for
-  administrator account changes.
-- `app/Views/`: public pages and shared public layout, plus the separate admin
-  layout, authentication, dashboard, account-management and future-module
-  views.
+- `app/Models/`: public-content queries, CMS models and the audit-log model
+  used for administrator and content changes.
+- `app/Views/`: public pages and shared public layout, plus CMS editors,
+  previews, media views, authentication, dashboard, account-management and
+  future-module views.
 - `app/Config/`: framework configuration, routes, filters and database groups.
-- `app/Database/Migrations/`: the existing core schema migration; Shield and
-  Settings migrations are supplied by their Composer packages.
+- `app/Database/Migrations/`: the core schema and additive CMS publishing
+  migration; Shield and Settings migrations are supplied by their Composer
+  packages.
 - `app/Filters/`: Shield's session, permission, CSRF, and authentication-rate
   filters are configured through the framework and Shield.
 - `public/assets/`: public assets and the separate admin stylesheet/script.
@@ -44,13 +48,14 @@ application.
 
 ## Database boundary
 
-Course and post listings use the existing `courses` and `posts` tables.
-The fixed About, College and Security Services pages use controlled views, with
-a published row from `pages` able to override a matching page slug. Content
-from database fields is escaped as text; stored HTML is not executed. Enquiry,
-application and content-management workflows remain future work. Shield owns
-the administrator identity, group and permission tables; the application does
-not add a parallel user table or role schema.
+Course, post and announcement public listings use the existing tables and
+exclude draft, archived, future and otherwise ineligible records. The fixed
+About, College and Security Services pages use controlled views, with a
+published row from `pages` able to override a matching allowlisted slug.
+Database content is escaped and rendered as text; stored markup is not
+executed. Public enquiry/application forms and their workflows remain future
+work. Shield owns the administrator identity, group and permission tables;
+the application does not add a parallel user table or role schema.
 
 ## Administration boundary
 
@@ -60,6 +65,12 @@ and activity timestamps only; passwords and hashes are not selected or
 rendered. Account creation, role assignment and status changes are protected
 by route filters and are recorded in the existing `audit_logs` table.
 Protected admin responses are not page-cached.
+
+CMS permissions are enforced on routes and server-side actions: Admissions
+Officers manage courses, Content Managers manage pages/news/announcements and
+media, and Super Admins have all CMS permissions. Security Services Officers
+cannot access these CMS or college modules. CMS records are audited through
+the existing audit log.
 
 ## Design constraints
 

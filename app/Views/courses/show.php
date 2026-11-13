@@ -18,7 +18,7 @@
             <?php if ($course['featured_image_path'] !== null): ?>
                 <img class="detail-image"
                      src="<?= esc(base_url($course['featured_image_path']), 'attr') ?>"
-                     alt=""
+                     alt="<?= esc($course['featured_image_alt'], 'attr') ?>"
                      loading="lazy"
                      decoding="async">
             <?php endif; ?>
@@ -45,6 +45,12 @@
         <aside class="detail-aside" aria-label="Course information">
             <h2>Course information</h2>
             <dl class="detail-facts">
+                <?php if (! empty($course['category_name'])): ?>
+                    <div>
+                        <dt>Category</dt>
+                        <dd><?= esc($course['category_name']) ?></dd>
+                    </div>
+                <?php endif; ?>
                 <div>
                     <dt>Listing status</dt>
                     <dd><?= esc($course['status_label']) ?></dd>
@@ -55,11 +61,17 @@
                         <dd><?= esc($course['duration']) ?></dd>
                     </div>
                 <?php endif; ?>
+                <?php if ($course['fee_display'] !== null): ?>
+                    <div>
+                        <dt>Course fee</dt>
+                        <dd><?= esc($course['fee_display']) ?></dd>
+                    </div>
+                <?php endif; ?>
             </dl>
             <p>
-                Fees, dates, admission requirements and assessment
-                arrangements must be confirmed by Admissions. No proposed
-                pricing or certification claims are published here.
+                Dates, admission requirements and assessment arrangements
+                must be confirmed by Admissions. Unverified fees and
+                certification claims are not published here.
             </p>
             <a class="button button-dark" href="<?= base_url('college/contact') ?>">
                 <?= $course['status'] === 'available' ? 'Ask About This Course' : 'Register Interest' ?>

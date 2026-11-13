@@ -10,11 +10,13 @@ class PostModel extends Model
     protected $table = 'posts';
     protected $primaryKey = 'id';
     protected $returnType = 'array';
+    protected $useTimestamps = true;
     protected $allowedFields = [
         'title',
         'slug',
         'excerpt',
         'content',
+        'category',
         'featured_image',
         'author_name',
         'status',
