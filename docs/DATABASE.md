@@ -3,12 +3,15 @@
 ## Current schema status
 
 The migration `2026-11-11-104518_CreateMembleyCoreTables` is applied in the
-configured MariaDB database as batch 1. The schema contains eleven application
-tables plus CodeIgniter's `migrations` table.
+configured MariaDB database as batch 1. It creates eleven application tables.
+CodeIgniter Shield's authentication migration and CodeIgniter Settings'
+migrations are applied in batch 2. The database also has CodeIgniter's
+`migrations` table.
 
-The public website now reads published content from `pages`, `courses` and
-`posts`. No write operations, CMS workflows or schema changes were added in
-Milestone 3. At inspection, the `courses` and `posts` tables were empty.
+The public website reads published content from `pages`, `courses` and
+`posts`. The admin foundation uses Shield's user and authorization tables and
+the existing `audit_logs` table. No custom migration or duplicate user table
+was added in Milestone 4.
 
 ## Application tables
 
@@ -25,6 +28,12 @@ Milestone 3. At inspection, the `courses` and `posts` tables were empty.
 | `employer_training_requests` | Organisation and training-request fields. |
 | `site_settings` | Unique setting keys and optional text values. |
 | `audit_logs` | Optional user reference, action, entity and request details. |
+
+Shield adds `users`, `auth_identities`, `auth_logins`, `auth_token_logins`,
+`auth_remember_tokens`, `auth_groups_users` and `auth_permissions_users`.
+Registration, token login and remember-me are disabled for the application,
+but the package schema remains intact. CodeIgniter Settings adds its
+`settings` table, used for Shield configuration.
 
 The migration adds an auto-incrementing `BIGINT` primary key and nullable
 `created_at`/`updated_at` timestamps to each application table. It also declares
@@ -52,12 +61,20 @@ application numbers; and the indexes declared in the migration.
 - `courses.category_id` is intended to identify a row in
   `course_categories`.
 - `applications.course_id` is intended to identify a row in `courses`.
-- `audit_logs.user_id` anticipates administrator accounts.
-- The current migration does not declare foreign-key constraints, and no
-  administrator/user table is created. These are schema limitations to resolve
-  before implementing the related CMS workflows.
+- The core application migration does not declare foreign-key constraints.
+  `audit_logs.user_id` remains an optional, application-level reference to a
+  Shield user.
 - Status values are stored as strings; application-level validation and
   allowed-state transitions are not implemented yet.
+
+## Administrator identity and audit
+
+Administrator roles are Shield groups stored in `auth_groups_users`;
+permissions and the role matrix are defined in `app/Config/AuthGroups.php`.
+No password hashes or authentication identities are selected for the admin
+account list. Account creation, role changes, activation and deactivation are
+recorded in `audit_logs`. The mutation and its audit row share a database
+transaction.
 
 ## Schema changes
 

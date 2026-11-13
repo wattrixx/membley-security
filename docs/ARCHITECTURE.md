@@ -16,20 +16,30 @@ application.
    and Contact pages.
 4. `CourseModel`, `PostModel` and `PageModel` query only content that meets
    the public publication rules.
-5. Public views extend `app/Views/layouts/main.php`, which provides the shared
-   navigation, contact details, stylesheet and browser JavaScript.
+5. `/admin/*` routes use Shield's session filter and explicit permission
+   filters before calling the admin controllers. The admin controllers render
+   the dashboard, login, forbidden and administrator-account views.
+6. Public views extend `app/Views/layouts/main.php`; admin views extend
+   `app/Views/layouts/admin.php`. The separate admin layout provides
+   role-filtered navigation, sign-out and responsive menu behavior.
 
 ## Current structure
 
-- `app/Controllers/`: `Home` and the public-page `PublicSite` controller,
-  extending the shared `BaseController`.
-- `app/Models/`: read-only public queries for courses, posts and fixed pages.
-- `app/Views/`: homepage, public pages, course/news listings and details,
-  shared cards/layout and CodeIgniter error views.
+- `app/Controllers/`: public controllers plus admin authentication,
+  dashboard, administrator management and explicitly unimplemented module
+  endpoints.
+- `app/Commands/`: the CLI-only first-Super-Admin provisioning command.
+- `app/Models/`: read-only public queries and the audit-log model used for
+  administrator account changes.
+- `app/Views/`: public pages and shared public layout, plus the separate admin
+  layout, authentication, dashboard, account-management and future-module
+  views.
 - `app/Config/`: framework configuration, routes, filters and database groups.
-- `app/Database/Migrations/`: the core schema migration.
-- `app/Filters/`: no custom application filters yet.
-- `public/assets/`: public CSS, JavaScript and image files.
+- `app/Database/Migrations/`: the existing core schema migration; Shield and
+  Settings migrations are supplied by their Composer packages.
+- `app/Filters/`: Shield's session, permission, CSRF, and authentication-rate
+  filters are configured through the framework and Shield.
+- `public/assets/`: public assets and the separate admin stylesheet/script.
 - `writable/`: framework runtime storage; it must not be web-accessible.
 
 ## Database boundary
@@ -38,7 +48,18 @@ Course and post listings use the existing `courses` and `posts` tables.
 The fixed About, College and Security Services pages use controlled views, with
 a published row from `pages` able to override a matching page slug. Content
 from database fields is escaped as text; stored HTML is not executed. Enquiry,
-application and administration workflows remain future work.
+application and content-management workflows remain future work. Shield owns
+the administrator identity, group and permission tables; the application does
+not add a parallel user table or role schema.
+
+## Administration boundary
+
+The dashboard only queries module counts for permissions held by the current
+administrator. User-list queries select usernames, email identities, status
+and activity timestamps only; passwords and hashes are not selected or
+rendered. Account creation, role assignment and status changes are protected
+by route filters and are recorded in the existing `audit_logs` table.
+Protected admin responses are not page-cached.
 
 ## Design constraints
 

@@ -28,3 +28,24 @@
 - Made no database schema or data changes; the course and post tables remain
   empty and show their published-content empty states.
 - Did not implement application/enquiry forms, authentication or CMS features.
+
+## 2026-11-13 — Milestone 4
+
+- Installed CodeIgniter Shield 1.4.1 and CodeIgniter Settings 2.4.0; applied
+  their vendor migrations without changing the existing core migration.
+- Added session-based admin login/logout, global session CSRF, authentication
+  rate limiting and server-side session/permission route protection.
+- Defined Super Admin, Content Manager, Admissions Officer and Security
+  Services Officer groups with granular permissions.
+- Added a responsive, brand-aligned administration dashboard with
+  permission-filtered database counts and disabled future-module navigation.
+- Added Super Admin account listing, creation, role assignment and
+  activation/deactivation with self-change and last-active-Super-Admin
+  safeguards. Changes are recorded in the existing audit log.
+- Added a CLI-only initial Super Admin provisioning command that requires a
+  process environment password and does not provide default credentials.
+- Added role-protected HTTP 501 placeholders for future content pages,
+  college applications and security enquiries; no later-milestone CRUD or
+  forms were implemented.
+- Updated the canonical architecture, database, security, setup, deployment,
+  module, testing and backlog documentation.

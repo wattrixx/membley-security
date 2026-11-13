@@ -25,6 +25,8 @@ they differ, prefer the implementation status recorded here.
 
 ## Current milestone
 
-Milestones 1 through 3 cover the inspected baseline, applied core schema,
-official-logo branding, responsive homepage and public-facing pages. Public
-enquiry/application forms and the CMS are not yet implemented.
+Milestone 4 adds CodeIgniter Shield session authentication, server-enforced
+administrator permissions, a role-aware dashboard and Super Admin account
+management. The public website remains available. Content CRUD, media uploads,
+public enquiry/application forms and their administration workflows are not
+implemented yet.

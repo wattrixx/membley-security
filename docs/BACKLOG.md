@@ -14,7 +14,9 @@ Items remain outstanding unless marked implemented in the current source.
 
 ## CMS foundation
 
-- Design administrator accounts, authentication, roles and route protection.
+- Test authentication and role restrictions in the target deployment
+  environment; configure a verified email sender before enabling password
+  reset or other email flows.
 - Add controlled CRUD workflows for pages, courses, posts, announcements and
   site settings; public read-only models now exist for pages, courses and posts.
 - Implement media upload and management with validated file handling.

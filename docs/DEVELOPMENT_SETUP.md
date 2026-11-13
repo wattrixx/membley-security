@@ -24,8 +24,24 @@ php spark migrate:status
 php spark serve --host 127.0.0.1 --port 8080
 ```
 
-The core migration is already applied in the current development database.
-Only run pending migrations after reviewing their changes.
+The core, Shield authentication and Settings migrations are applied in the
+current development database. Review and apply pending migrations before
+running the application in a new environment.
+
+To provision the first Super Admin in an environment with no existing Super
+Admin, provide a strong password through the process environment. Avoid putting
+the password in shell history or source files:
+
+```sh
+read -s -p "Initial admin password: " MEMBLEY_INITIAL_ADMIN_PASSWORD
+printf '\n'
+export MEMBLEY_INITIAL_ADMIN_PASSWORD
+php spark admin:provision-superadmin <username> <email>
+unset MEMBLEY_INITIAL_ADMIN_PASSWORD
+```
+
+The command refuses to create another Super Admin if one already exists. It
+does not print or persist the password. There is no default admin account.
 
 ## Tests
 
