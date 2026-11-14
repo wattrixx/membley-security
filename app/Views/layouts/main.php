@@ -102,6 +102,7 @@
                 <a href="https://maps.app.goo.gl/u1fQ5uNFDMz1g3cQ6"
                    target="_blank"
                    rel="noopener noreferrer">Open location in Google Maps</a>
+                <br><a href="<?= base_url('privacy') ?>">Privacy Notice</a>
             </p>
         </div>
     </div>

@@ -11,6 +11,8 @@ Items remain outstanding unless marked implemented in the current source.
 - Confirm service scope and approved descriptions before expanding public
   claims. Keep proposed fees and internal planning notes private.
 - Review image choices and final branding with the client.
+- Have the organisation approve the public Privacy Notice, including a
+  retention schedule and dedicated privacy contact, before production form use.
 
 ## CMS follow-up
 
@@ -21,7 +23,10 @@ Items remain outstanding unless marked implemented in the current source.
   move uploads outside the document root if Apache protections are unavailable.
 - Decide whether to add managed website settings; settings CRUD is not part of
   the completed content modules.
-- Add enquiry and application workflows, statuses and administrator views.
+- Implement Milestone 7 application and enquiry review/assignment workflows
+  with verified Admissions/Security Services access boundaries.
+- Configure and verify email sender/recipients before enabling submission
+  notifications; notifications are disabled by default.
 - Review foreign-key and status-integrity constraints before a future migration.
 
 ## Quality and release

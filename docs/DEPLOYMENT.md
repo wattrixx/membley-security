@@ -23,6 +23,10 @@ before scheduling production deployment.
 - Set PHP's `upload_max_filesize` to at least `5M` and `post_max_size` to a
   value above `5M`; lower PHP limits reject files before the application can
   apply its own size validation.
+- Before enabling public submissions, approve the Privacy Notice's retention
+  schedule and privacy contact. Configure a verified email sender and the
+  appropriate College/Security Services recipients before enabling optional
+  submission notifications.
 
 ## Release checklist
 
@@ -40,7 +44,8 @@ before scheduling production deployment.
 7. Confirm the public document root does not expose application or environment
    files.
 
-The public website, admin authentication and CMS content/media modules are
-implemented. Applications, public enquiry forms and their administration
-workflows are not. Email-based password reset is not configured pending a
-verified production sender.
+The public website, admin authentication, CMS content/media modules and
+Milestone 6 public application/enquiry forms are implemented. Application and
+enquiry review workflows remain future work. Submission notifications and
+email-based password reset stay disabled pending verified production
+configuration.

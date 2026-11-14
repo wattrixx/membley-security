@@ -29,6 +29,10 @@
                            target="_blank"
                            rel="noopener noreferrer">Open location in Google Maps</a>
                     </p>
+                    <a class="button button-primary"
+                       href="<?= esc(base_url($contact['path'] === 'college' ? 'college/enquiry' : 'security-services/enquiry'), 'attr') ?>">
+                        Send an enquiry
+                    </a>
                     <a class="button button-dark" href="<?= esc(base_url($contact['path']), 'attr') ?>">
                         Visit this section
                     </a>
@@ -38,9 +42,9 @@
 
         <div class="placeholder-note contact-notice">
             <p>
-                Online enquiry and application forms are not yet available.
-                Please call the relevant team for current information. No
-                email address or separate team phone number has been supplied.
+                College applications are accepted only for courses currently
+                marked as available. Security enquiries are stored separately
+                from College enquiries and applications.
             </p>
         </div>
     </div>

@@ -65,3 +65,22 @@
 - Verified role-specific route access in the local browser; full test and
   deployment-host upload checks remain subject to the limitations recorded in
   [Testing](TESTING.md) and [Backlog](BACKLOG.md).
+
+## 2026-11-14 — Milestone 6
+
+- Added public application, College enquiry and Security Services enquiry
+  routes and forms with server-side validation, CSRF, honeypots, rate limits
+  and session-backed one-time tokens.
+- Added an additive migration for application country/privacy acknowledgement
+  and a dedicated `security_enquiries` table; College enquiries continue to
+  use the existing enquiries table, and applications remain separate.
+- Restricted applications to published courses marked available and added
+  random application references with session-backed confirmation.
+- Added a public Privacy Notice and separate urgent/sensitive-information
+  guidance for Security Services enquiries.
+- Prepared optional email notifications using environment-backed config;
+  notifications remain disabled until verified addresses and mail settings
+  are supplied.
+- Updated the dashboard's Security Services count to use the dedicated table.
+- Public submissions can be stored and confirmed, but administrative review
+  and follow-up remain Milestone 7 work.

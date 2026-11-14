@@ -73,9 +73,12 @@
                 must be confirmed by Admissions. Unverified fees and
                 certification claims are not published here.
             </p>
-            <a class="button button-dark" href="<?= base_url('college/contact') ?>">
-                <?= $course['status'] === 'available' ? 'Ask About This Course' : 'Register Interest' ?>
-            </a>
+            <?php if ($course['status'] === 'available'): ?>
+                <a class="button button-dark" href="<?= esc(base_url('college/apply/' . $course['slug']), 'attr') ?>">Apply for this course</a>
+            <?php else: ?>
+                <a class="button button-dark" href="<?= base_url('college/enquiry') ?>">Register interest</a>
+            <?php endif; ?>
+            <p><a class="text-link" href="<?= base_url('college/enquiry') ?>">Ask Admissions about this course</a></p>
         </aside>
     </div>
 </section>

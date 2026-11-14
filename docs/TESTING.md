@@ -112,3 +112,34 @@ models, views or publication rules.
   content, media, user and audit tables were confirmed empty afterward.
 - The changed files use CRLF line endings; whitespace validation passed with
   `git -c core.whitespace=cr-at-eol diff --check`.
+
+### Milestone 6 — public submissions
+
+- Applied `2026-11-14-090000_AddPublicSubmissionWorkflows` as migration batch
+  4. Migration status passed, and the new table and added columns were
+  confirmed.
+- `php spark routes` registered application, College enquiry, Security
+  Services enquiry, confirmation and privacy routes.
+- PHP syntax checks passed for all files under `app/` and `tests/`.
+  `composer validate --no-check-publish` passed. The focused public-submission
+  unit tests passed (3 tests, 8 assertions).
+- Browser tests submitted one synthetic application, one College enquiry and
+  one Security Services enquiry. Each was stored with privacy acknowledgement
+  and a matching audit event; all synthetic submission rows, audit events and
+  the temporary available course were removed afterward.
+- A course changed to Proposed after the application form loaded was rejected
+  server-side with an explanatory validation message. A filled honeypot
+  returned HTTP 400, and a POST missing its CSRF token returned HTTP 403.
+- The confirmation page did not expose enquiry details and showed only the
+  random application reference for the application flow. Session-backed token
+  context binding and single-use behavior, plus throttler capacity enforcement,
+  passed unit tests.
+- Application, College enquiry, Security Services enquiry and Privacy Notice
+  pages had no horizontal overflow at 390px or 1440px viewport widths.
+- Full PHPUnit ran 8 tests: 6 passed and 2 database tests errored because the
+  PHP runtime does not have `sqlite3`. Browser/database checks used the
+  configured local MariaDB. Email notifications remain disabled and were not
+  tested because verified sender and recipients are not configured.
+- The Privacy Notice still needs organisation approval, a retention schedule
+  and a dedicated privacy contact before production use. Admin review and
+  follow-up workflows remain Milestone 7.

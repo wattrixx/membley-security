@@ -9,11 +9,20 @@ $routes->get('college', 'PublicSite::college');
 $routes->get('college/contact', 'PublicSite::collegeContact');
 $routes->get('college/courses', 'PublicSite::courses');
 $routes->get('college/courses/(:segment)', 'PublicSite::course/$1');
+$routes->get('college/apply', 'PublicSubmissions::application', ['as' => 'college.application']);
+$routes->get('college/apply/(:segment)', 'PublicSubmissions::application/$1', ['as' => 'college.application.course']);
+$routes->post('college/apply', 'PublicSubmissions::submitApplication', ['as' => 'college.application.submit']);
+$routes->get('college/enquiry', 'PublicSubmissions::collegeEnquiry', ['as' => 'college.enquiry']);
+$routes->post('college/enquiry', 'PublicSubmissions::submitCollegeEnquiry', ['as' => 'college.enquiry.submit']);
+$routes->get('submission/received', 'PublicSubmissions::received', ['as' => 'submission.received']);
+$routes->get('privacy', 'PublicSubmissions::privacy', ['as' => 'privacy']);
 $routes->get('contact', 'PublicSite::contact');
 $routes->get('news', 'PublicSite::news');
 $routes->get('news/(:segment)', 'PublicSite::article/$1');
 $routes->get('security-services', 'PublicSite::securityServices');
 $routes->get('security-services/contact', 'PublicSite::securityContact');
+$routes->get('security-services/enquiry', 'PublicSubmissions::securityEnquiry', ['as' => 'security.enquiry']);
+$routes->post('security-services/enquiry', 'PublicSubmissions::submitSecurityEnquiry', ['as' => 'security.enquiry.submit']);
 
 $routes->get('admin/login', 'Admin\AuthController::login', [
     'as'     => 'login',

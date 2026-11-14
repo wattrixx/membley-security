@@ -25,7 +25,6 @@ they differ, prefer the implementation status recorded here.
 
 ## Current milestone
 
-Milestone 5 adds permission-gated management for courses, news, fixed public
-pages, announcements and image media. Public models expose only published
-content. Applications, public enquiry forms and their administration workflows
-remain future work.
+Milestone 6 adds public College applications, separate College and Security
+Services enquiry forms, privacy acknowledgement, anti-abuse controls and
+submission persistence. Public submission administration remains future work.

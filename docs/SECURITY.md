@@ -6,8 +6,9 @@
   must remain outside the public directory.
 - `.env` is ignored by Git. Never commit production credentials or encryption
   keys.
-- Public content has no submission forms. CMS image uploads are available only
-  to authorized administrators through protected POST routes.
+- Public forms accept College applications, College enquiries and Security
+  Services enquiries through separate routes and separate persistence paths.
+  CMS image uploads remain available only to authorized administrators.
 - Database-backed page text, course fields, article content, titles, dates and
   metadata are escaped at render time. Article/page content is rendered as
   plain text with line breaks; stored markup is not trusted.
@@ -24,10 +25,30 @@
   separate; direct requests to a restricted route are denied server-side.
 - CMS routes enforce role permissions server-side. Admissions Officers manage
   courses; Content Managers manage pages, news, announcements and media;
-  Security Services Officers cannot access these modules. No workflow for
-  confidential security-service enquiries or college applications exists yet.
+  Security Services Officers cannot access these CMS or college modules.
+  Public submissions do not expose record retrieval routes; their
+  administration interfaces remain out of scope until Milestone 7.
 - CSRF protection is enabled globally in session mode. State-changing admin
-  operations are POST-only.
+  operations and public form submissions are POST-only.
+- Public submissions are server-validated and escaped on output. Application
+  course IDs are rechecked against published, currently available courses.
+  Honeypot fields, per-form IP throttling (five attempts per ten minutes),
+  CSRF and one-hour session-backed one-time form tokens protect submissions.
+  Successful POSTs redirect to a confirmation page and do not expose submitted
+  details in URLs or confirmation content.
+- Public submission records are written with a generic audit event in one
+  database transaction. Audit records omit applicant/enquirer details and IP
+  addresses. Application references use random bytes and are not sequential.
+- The public Privacy Notice describes current handling but still needs an
+  organisation-approved retention period and privacy contact before
+  production use. Do not treat it as legal approval.
+- Email notifications are disabled by default. They require
+  `publicSubmissions.notificationsEnabled = true`, verified
+  `email.fromEmail`/`email.fromName`, the appropriate
+  `publicSubmissions.collegeRecipient` or
+  `publicSubmissions.securityRecipient`, and mail transport settings. Email
+  settings can be supplied through the ignored `.env`; errors are logged
+  without exposing submitted details and do not roll back a stored submission.
 - Shield's `auth-rates` filter limits authentication-route requests to 10 per
   IP address per minute.
 - Administrator passwords use Shield password hashing and the configured
@@ -54,10 +75,7 @@
   an externally supplied process environment password. No default credentials
   are hardcoded. Email/reset flows are not configured until a verified sender
   is provided.
-- Public enquiry/application forms and their rate limits/spam protections
-  remain future work.
-
-## Before adding forms or CMS routes
+## Before production
 
 1. Keep permission checks on every new route and protected operation; do not
    rely on hiding navigation items.
@@ -65,8 +83,10 @@
 3. Keep upload validation in place and verify server configuration denies
    executable content in the public media directory. Prefer storage outside
    the document root if the deployment supports safe controlled delivery.
-4. Add rate limiting and spam protections to public forms.
-5. Log administrative changes without storing unnecessary sensitive data.
+4. Confirm the Privacy Notice's retention schedule and privacy contact.
+5. Configure and test verified notification sender/recipient details, or leave
+   notifications disabled.
+6. Log administrative changes without storing unnecessary sensitive data.
 
 ## Production
 

@@ -25,6 +25,9 @@ application.
 7. CMS-managed media is validated and stored with generated names in
    `public/uploads/media/`; media records and referenced images are managed
    through the existing `media` table.
+8. Explicit public POST routes handle College applications, College enquiries
+   and Security Services enquiries. The workflows validate input, store each
+   type separately and redirect to a session-backed confirmation page.
 
 ## Current structure
 
@@ -53,9 +56,11 @@ exclude draft, archived, future and otherwise ineligible records. The fixed
 About, College and Security Services pages use controlled views, with a
 published row from `pages` able to override a matching allowlisted slug.
 Database content is escaped and rendered as text; stored markup is not
-executed. Public enquiry/application forms and their workflows remain future
-work. Shield owns the administrator identity, group and permission tables;
-the application does not add a parallel user table or role schema.
+executed. College applications use `applications`, College enquiries use the
+existing `enquiries` table with a College-only type, and Security Services
+enquiries use `security_enquiries`. Shield owns administrator identity,
+group and permission tables; the application does not add a parallel user
+table or role schema.
 
 ## Administration boundary
 
@@ -79,4 +84,7 @@ the existing audit log.
   introduced.
 - Keep public content sections controlled and reusable; do not add an
   unrestricted page builder.
+- Keep public submission storage, confirmation and future administration
+  separate for applications, College enquiries and Security Services
+  enquiries.
 - Keep credentials in the ignored environment file, never in `public/`.

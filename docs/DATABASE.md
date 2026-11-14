@@ -7,7 +7,9 @@ configured MariaDB database as batch 1. It creates eleven application tables.
 CodeIgniter Shield's authentication migration and CodeIgniter Settings'
 migrations are applied in batch 2. The additive
 `2026-11-13-111500_AddCmsPublishingFields` migration is applied in batch 3.
-The database also has CodeIgniter's `migrations` table.
+The additive `2026-11-14-090000_AddPublicSubmissionWorkflows` migration is
+applied in batch 4; it adds public submission fields and a dedicated Security
+Services enquiry table. The database also has CodeIgniter's `migrations` table.
 
 The public website reads published content from `pages`, `courses` and
 `posts`. The admin foundation uses Shield's user and authorization tables and
@@ -24,8 +26,9 @@ was added in Milestone 4.
 | `announcements` | Announcement content and optional start/end dates. |
 | `pages` | Reusable page content, metadata and publication status. |
 | `media` | Stored file names, paths, MIME type, size and alt text. |
-| `enquiries` | General enquiry contact and message fields with a status. |
-| `applications` | Course application contact fields and application status. |
+| `enquiries` | College enquiries only; includes privacy acknowledgement and status. |
+| `security_enquiries` | Separate Security Services contact, organization, category and message fields. |
+| `applications` | Course application contact fields, country, privacy acknowledgement and status. |
 | `employer_training_requests` | Organisation and training-request fields. |
 | `site_settings` | Unique setting keys and optional text values. |
 | `audit_logs` | Optional user reference, action, entity and request details. |
@@ -48,6 +51,13 @@ tables. Existing courses with an allowed availability status and a past
 publication date are marked published to preserve their prior public
 visibility.
 
+The Milestone 6 migration adds `applications.country` and
+`applications.privacy_accepted`, adds `enquiries.privacy_accepted`, and creates
+`security_enquiries`. New College enquiry rows use `enquiry_type = 'college'`;
+Security Services enquiries never use that table. There is no shared public
+submission table or workflow. Existing records, if any, retain the default
+unacknowledged privacy value.
+
 ## Public-content rules
 
 - Fixed pages (`about`, `college`, `security-services`) are overridden only by
@@ -57,6 +67,9 @@ visibility.
   `published_at`, and an availability status of `available`, `proposed` or
   `development`. Draft, archived, unknown, undated and future courses are not
   exposed. Course fees are rendered only when `fee_verified` is true.
+- Applications can be submitted only for courses matching the public
+  publication/date rules and `status = 'available'`. Proposed, development,
+  draft, archived, future and unknown courses are rejected server-side.
 - News articles and announcements require published state and a non-future
   publication date. Announcement start/end dates further limit visibility.
   Detail routes use the same publication rules as listings.
@@ -73,6 +86,9 @@ visibility.
 - `courses.category_id` is intended to identify a row in
   `course_categories`.
 - `applications.course_id` is intended to identify a row in `courses`.
+- College enquiries are inserted into `enquiries` only with
+  `enquiry_type = 'college'`; Security Services submissions are inserted into
+  `security_enquiries`.
 - The core application migration does not declare foreign-key constraints.
   `audit_logs.user_id` remains an optional, application-level reference to a
   Shield user.

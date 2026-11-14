@@ -117,8 +117,7 @@ class Dashboard extends AdminBaseController
     private function countSecurityEnquiries(): int
     {
         return (int) db_connect(config('Auth')->DBGroup)
-            ->table('enquiries')
-            ->where('enquiry_type', 'security_services')
+            ->table('security_enquiries')
             ->countAllResults();
     }
 }

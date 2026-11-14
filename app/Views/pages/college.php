@@ -67,18 +67,19 @@
             <h2>Check the details before applying.</h2>
             <p>
                 Course availability, dates and assessment arrangements are
-                confirmed by Admissions for each intake. Application forms are
-                not yet available on this website.
+                confirmed by Admissions for each intake. You can apply online
+                to courses currently accepting applications.
             </p>
         </div>
         <ol class="step-list">
-            <li>Select a course and ask Admissions whether an intake is open.</li>
+            <li>Select a course marked Available and submit your contact details.</li>
             <li>Confirm the entry requirements, schedule and final fee directly with the College.</li>
-            <li>Follow the application instructions provided by Admissions.</li>
+            <li>Admissions will follow up about the next steps for your application.</li>
         </ol>
         <div class="section-cta">
             <a class="button button-dark" href="<?= base_url('college/courses') ?>">View Course Listings</a>
-            <a class="button button-primary" href="<?= base_url('college/contact') ?>">Contact Admissions</a>
+            <a class="button button-primary" href="<?= base_url('college/apply') ?>">Apply to the College</a>
+            <a class="text-link" href="<?= base_url('college/enquiry') ?>">Ask Admissions a question</a>
         </div>
     </div>
 </section>

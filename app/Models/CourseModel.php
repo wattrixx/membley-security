@@ -70,6 +70,46 @@ class CourseModel extends Model
         return $course === null ? null : $course;
     }
 
+    /**
+     * @return list<array<string, mixed>>
+     */
+    public function findCoursesAcceptingApplications(): array
+    {
+        return $this->publicBuilder()
+            ->where('courses.status', 'available')
+            ->orderBy('courses.title', 'ASC')
+            ->get()
+            ->getResultArray();
+    }
+
+    /**
+     * @return array<string, mixed>|null
+     */
+    public function findApplicationCourseBySlug(string $slug): ?array
+    {
+        $course = $this->publicBuilder()
+            ->where('courses.slug', $slug)
+            ->where('courses.status', 'available')
+            ->get()
+            ->getRowArray();
+
+        return $course === null ? null : $course;
+    }
+
+    /**
+     * @return array<string, mixed>|null
+     */
+    public function findApplicationCourseById(int $id): ?array
+    {
+        $course = $this->publicBuilder()
+            ->where('courses.id', $id)
+            ->where('courses.status', 'available')
+            ->get()
+            ->getRowArray();
+
+        return $course === null ? null : $course;
+    }
+
     private function publicBuilder(): BaseBuilder
     {
         return $this->builder()

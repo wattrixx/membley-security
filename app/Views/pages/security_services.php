@@ -68,11 +68,11 @@
             <span class="eyebrow">Enquiries</span>
             <h2>Request a discussion with the Security Services team.</h2>
             <p>
-                Enquiry forms are not yet available online. Please call to
-                discuss your request and the appropriate next step.
+                Send a general service enquiry. Do not include sensitive
+                security information in the online form.
             </p>
         </div>
-        <a class="button button-dark" href="<?= base_url('security-services/contact') ?>">View Contact Options</a>
+        <a class="button button-dark" href="<?= base_url('security-services/enquiry') ?>">Send a Security Services enquiry</a>
     </div>
 </section>
 
