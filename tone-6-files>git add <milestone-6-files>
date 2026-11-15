@@ -1,0 +1,764 @@
+app/Controllers/Admin/Dashboard.php:120: trailing whitespace.
+[32m+[m[32m            ->table('security_enquiries')[m[41m[m
+app/Models/CourseModel.php:73: trailing whitespace.
+[32m+[m[32m    /**[m[41m[m
+app/Models/CourseModel.php:74: trailing whitespace.
+[32m+[m[32m     * @return list<array<string, mixed>>[m[41m[m
+app/Models/CourseModel.php:75: trailing whitespace.
+[32m+[m[32m     */[m[41m[m
+app/Models/CourseModel.php:76: trailing whitespace.
+[32m+[m[32m    public function findCoursesAcceptingApplications(): array[m[41m[m
+app/Models/CourseModel.php:77: trailing whitespace.
+[32m+[m[32m    {[m[41m[m
+app/Models/CourseModel.php:78: trailing whitespace.
+[32m+[m[32m        return $this->publicBuilder()[m[41m[m
+app/Models/CourseModel.php:79: trailing whitespace.
+[32m+[m[32m            ->where('courses.status', 'available')[m[41m[m
+app/Models/CourseModel.php:80: trailing whitespace.
+[32m+[m[32m            ->orderBy('courses.title', 'ASC')[m[41m[m
+app/Models/CourseModel.php:81: trailing whitespace.
+[32m+[m[32m            ->get()[m[41m[m
+app/Models/CourseModel.php:82: trailing whitespace.
+[32m+[m[32m            ->getResultArray();[m[41m[m
+app/Models/CourseModel.php:83: trailing whitespace.
+[32m+[m[32m    }[m[41m[m
+app/Models/CourseModel.php:84: trailing whitespace.
+[32m+[m[41m[m
+app/Models/CourseModel.php:85: trailing whitespace.
+[32m+[m[32m    /**[m[41m[m
+app/Models/CourseModel.php:86: trailing whitespace.
+[32m+[m[32m     * @return array<string, mixed>|null[m[41m[m
+app/Models/CourseModel.php:87: trailing whitespace.
+[32m+[m[32m     */[m[41m[m
+app/Models/CourseModel.php:88: trailing whitespace.
+[32m+[m[32m    public function findApplicationCourseBySlug(string $slug): ?array[m[41m[m
+app/Models/CourseModel.php:89: trailing whitespace.
+[32m+[m[32m    {[m[41m[m
+app/Models/CourseModel.php:90: trailing whitespace.
+[32m+[m[32m        $course = $this->publicBuilder()[m[41m[m
+app/Models/CourseModel.php:91: trailing whitespace.
+[32m+[m[32m            ->where('courses.slug', $slug)[m[41m[m
+app/Models/CourseModel.php:92: trailing whitespace.
+[32m+[m[32m            ->where('courses.status', 'available')[m[41m[m
+app/Models/CourseModel.php:93: trailing whitespace.
+[32m+[m[32m            ->get()[m[41m[m
+app/Models/CourseModel.php:94: trailing whitespace.
+[32m+[m[32m            ->getRowArray();[m[41m[m
+app/Models/CourseModel.php:95: trailing whitespace.
+[32m+[m[41m[m
+app/Models/CourseModel.php:96: trailing whitespace.
+[32m+[m[32m        return $course === null ? null : $course;[m[41m[m
+app/Models/CourseModel.php:97: trailing whitespace.
+[32m+[m[32m    }[m[41m[m
+app/Models/CourseModel.php:98: trailing whitespace.
+[32m+[m[41m[m
+app/Models/CourseModel.php:99: trailing whitespace.
+[32m+[m[32m    /**[m[41m[m
+app/Models/CourseModel.php:100: trailing whitespace.
+[32m+[m[32m     * @return array<string, mixed>|null[m[41m[m
+app/Models/CourseModel.php:101: trailing whitespace.
+[32m+[m[32m     */[m[41m[m
+app/Models/CourseModel.php:102: trailing whitespace.
+[32m+[m[32m    public function findApplicationCourseById(int $id): ?array[m[41m[m
+app/Models/CourseModel.php:103: trailing whitespace.
+[32m+[m[32m    {[m[41m[m
+app/Models/CourseModel.php:104: trailing whitespace.
+[32m+[m[32m        $course = $this->publicBuilder()[m[41m[m
+app/Models/CourseModel.php:105: trailing whitespace.
+[32m+[m[32m            ->where('courses.id', $id)[m[41m[m
+app/Models/CourseModel.php:106: trailing whitespace.
+[32m+[m[32m            ->where('courses.status', 'available')[m[41m[m
+app/Models/CourseModel.php:107: trailing whitespace.
+[32m+[m[32m            ->get()[m[41m[m
+app/Models/CourseModel.php:108: trailing whitespace.
+[32m+[m[32m            ->getRowArray();[m[41m[m
+app/Models/CourseModel.php:109: trailing whitespace.
+[32m+[m[41m[m
+app/Models/CourseModel.php:110: trailing whitespace.
+[32m+[m[32m        return $course === null ? null : $course;[m[41m[m
+app/Models/CourseModel.php:111: trailing whitespace.
+[32m+[m[32m    }[m[41m[m
+app/Models/CourseModel.php:112: trailing whitespace.
+[32m+[m[41m[m
+app/Views/contact/index.php:32: trailing whitespace.
+[32m+[m[32m                    <a class="button button-primary"[m[41m[m
+app/Views/contact/index.php:33: trailing whitespace.
+[32m+[m[32m                       href="<?= esc(base_url($contact['path'] === 'college' ? 'college/enquiry' : 'security-services/enquiry'), 'attr') ?>">[m[41m[m
+app/Views/contact/index.php:34: trailing whitespace.
+[32m+[m[32m                        Send an enquiry[m[41m[m
+app/Views/contact/index.php:35: trailing whitespace.
+[32m+[m[32m                    </a>[m[41m[m
+app/Views/contact/index.php:45: trailing whitespace.
+[32m+[m[32m                College applications are accepted only for courses currently[m[41m[m
+app/Views/contact/index.php:46: trailing whitespace.
+[32m+[m[32m                marked as available. Security enquiries are stored separately[m[41m[m
+app/Views/contact/index.php:47: trailing whitespace.
+[32m+[m[32m                from College enquiries and applications.[m[41m[m
+app/Views/courses/show.php:76: trailing whitespace.
+[32m+[m[32m            <?php if ($course['status'] === 'available'): ?>[m[41m[m
+app/Views/courses/show.php:77: trailing whitespace.
+[32m+[m[32m                <a class="button button-dark" href="<?= esc(base_url('college/apply/' . $course['slug']), 'attr') ?>">Apply for this course</a>[m[41m[m
+app/Views/courses/show.php:78: trailing whitespace.
+[32m+[m[32m            <?php else: ?>[m[41m[m
+app/Views/courses/show.php:79: trailing whitespace.
+[32m+[m[32m                <a class="button button-dark" href="<?= base_url('college/enquiry') ?>">Register interest</a>[m[41m[m
+app/Views/courses/show.php:80: trailing whitespace.
+[32m+[m[32m            <?php endif; ?>[m[41m[m
+app/Views/courses/show.php:81: trailing whitespace.
+[32m+[m[32m            <p><a class="text-link" href="<?= base_url('college/enquiry') ?>">Ask Admissions about this course</a></p>[m[41m[m
+app/Views/layouts/main.php:105: trailing whitespace.
+[32m+[m[32m                <br><a href="<?= base_url('privacy') ?>">Privacy Notice</a>[m[41m[m
+app/Views/pages/college.php:70: trailing whitespace.
+[32m+[m[32m                confirmed by Admissions for each intake. You can apply online[m[41m[m
+app/Views/pages/college.php:71: trailing whitespace.
+[32m+[m[32m                to courses currently accepting applications.[m[41m[m
+app/Views/pages/college.php:75: trailing whitespace.
+[32m+[m[32m            <li>Select a course marked Available and submit your contact details.</li>[m[41m[m
+app/Views/pages/college.php:77: trailing whitespace.
+[32m+[m[32m            <li>Admissions will follow up about the next steps for your application.</li>[m[41m[m
+app/Views/pages/college.php:81: trailing whitespace.
+[32m+[m[32m            <a class="button button-primary" href="<?= base_url('college/apply') ?>">Apply to the College</a>[m[41m[m
+app/Views/pages/college.php:82: trailing whitespace.
+[32m+[m[32m            <a class="text-link" href="<?= base_url('college/enquiry') ?>">Ask Admissions a question</a>[m[41m[m
+app/Views/pages/security_services.php:71: trailing whitespace.
+[32m+[m[32m                Send a general service enquiry. Do not include sensitive[m[41m[m
+app/Views/pages/security_services.php:72: trailing whitespace.
+[32m+[m[32m                security information in the online form.[m[41m[m
+app/Views/pages/security_services.php:75: trailing whitespace.
+[32m+[m[32m        <a class="button button-dark" href="<?= base_url('security-services/enquiry') ?>">Send a Security Services enquiry</a>[m[41m[m
+docs/ARCHITECTURE.md:28: trailing whitespace.
+[32m+[m[32m8. Explicit public POST routes handle College applications, College enquiries[m[41m[m
+docs/ARCHITECTURE.md:29: trailing whitespace.
+[32m+[m[32m   and Security Services enquiries. The workflows validate input, store each[m[41m[m
+docs/ARCHITECTURE.md:30: trailing whitespace.
+[32m+[m[32m   type separately and redirect to a session-backed confirmation page.[m[41m[m
+docs/ARCHITECTURE.md:59: trailing whitespace.
+[32m+[m[32mexecuted. College applications use `applications`, College enquiries use the[m[41m[m
+docs/ARCHITECTURE.md:60: trailing whitespace.
+[32m+[m[32mexisting `enquiries` table with a College-only type, and Security Services[m[41m[m
+docs/ARCHITECTURE.md:61: trailing whitespace.
+[32m+[m[32menquiries use `security_enquiries`. Shield owns administrator identity,[m[41m[m
+docs/ARCHITECTURE.md:62: trailing whitespace.
+[32m+[m[32mgroup and permission tables; the application does not add a parallel user[m[41m[m
+docs/ARCHITECTURE.md:63: trailing whitespace.
+[32m+[m[32mtable or role schema.[m[41m[m
+docs/ARCHITECTURE.md:87: trailing whitespace.
+[32m+[m[32m- Keep public submission storage, confirmation and future administration[m[41m[m
+docs/ARCHITECTURE.md:88: trailing whitespace.
+[32m+[m[32m  separate for applications, College enquiries and Security Services[m[41m[m
+docs/ARCHITECTURE.md:89: trailing whitespace.
+[32m+[m[32m  enquiries.[m[41m[m
+docs/BACKLOG.md:14: trailing whitespace.
+[32m+[m[32m- Have the organisation approve the public Privacy Notice, including a[m[41m[m
+docs/BACKLOG.md:15: trailing whitespace.
+[32m+[m[32m  retention schedule and dedicated privacy contact, before production form use.[m[41m[m
+docs/BACKLOG.md:26: trailing whitespace.
+[32m+[m[32m- Implement Milestone 7 application and enquiry review/assignment workflows[m[41m[m
+docs/BACKLOG.md:27: trailing whitespace.
+[32m+[m[32m  with verified Admissions/Security Services access boundaries.[m[41m[m
+docs/BACKLOG.md:28: trailing whitespace.
+[32m+[m[32m- Configure and verify email sender/recipients before enabling submission[m[41m[m
+docs/BACKLOG.md:29: trailing whitespace.
+[32m+[m[32m  notifications; notifications are disabled by default.[m[41m[m
+docs/CHANGELOG.md:68: trailing whitespace.
+[32m+[m[41m[m
+docs/CHANGELOG.md:69: trailing whitespace.
+[32m+[m[32m## 2026-11-14 — Milestone 6[m[41m[m
+docs/CHANGELOG.md:70: trailing whitespace.
+[32m+[m[41m[m
+docs/CHANGELOG.md:71: trailing whitespace.
+[32m+[m[32m- Added public application, College enquiry and Security Services enquiry[m[41m[m
+docs/CHANGELOG.md:72: trailing whitespace.
+[32m+[m[32m  routes and forms with server-side validation, CSRF, honeypots, rate limits[m[41m[m
+docs/CHANGELOG.md:73: trailing whitespace.
+[32m+[m[32m  and session-backed one-time tokens.[m[41m[m
+docs/CHANGELOG.md:74: trailing whitespace.
+[32m+[m[32m- Added an additive migration for application country/privacy acknowledgement[m[41m[m
+docs/CHANGELOG.md:75: trailing whitespace.
+[32m+[m[32m  and a dedicated `security_enquiries` table; College enquiries continue to[m[41m[m
+docs/CHANGELOG.md:76: trailing whitespace.
+[32m+[m[32m  use the existing enquiries table, and applications remain separate.[m[41m[m
+docs/CHANGELOG.md:77: trailing whitespace.
+[32m+[m[32m- Restricted applications to published courses marked available and added[m[41m[m
+docs/CHANGELOG.md:78: trailing whitespace.
+[32m+[m[32m  random application references with session-backed confirmation.[m[41m[m
+docs/CHANGELOG.md:79: trailing whitespace.
+[32m+[m[32m- Added a public Privacy Notice and separate urgent/sensitive-information[m[41m[m
+docs/CHANGELOG.md:80: trailing whitespace.
+[32m+[m[32m  guidance for Security Services enquiries.[m[41m[m
+docs/CHANGELOG.md:81: trailing whitespace.
+[32m+[m[32m- Prepared optional email notifications using environment-backed config;[m[41m[m
+docs/CHANGELOG.md:82: trailing whitespace.
+[32m+[m[32m  notifications remain disabled until verified addresses and mail settings[m[41m[m
+docs/CHANGELOG.md:83: trailing whitespace.
+[32m+[m[32m  are supplied.[m[41m[m
+docs/CHANGELOG.md:84: trailing whitespace.
+[32m+[m[32m- Updated the dashboard's Security Services count to use the dedicated table.[m[41m[m
+docs/CHANGELOG.md:85: trailing whitespace.
+[32m+[m[32m- Public submissions can be stored and confirmed, but administrative review[m[41m[m
+docs/CHANGELOG.md:86: trailing whitespace.
+[32m+[m[32m  and follow-up remain Milestone 7 work.[m[41m[m
+docs/DATABASE.md:10: trailing whitespace.
+[32m+[m[32mThe additive `2026-11-14-090000_AddPublicSubmissionWorkflows` migration is[m[41m[m
+docs/DATABASE.md:11: trailing whitespace.
+[32m+[m[32mapplied in batch 4; it adds public submission fields and a dedicated Security[m[41m[m
+docs/DATABASE.md:12: trailing whitespace.
+[32m+[m[32mServices enquiry table. The database also has CodeIgniter's `migrations` table.[m[41m[m
+docs/DATABASE.md:29: trailing whitespace.
+[32m+[m[32m| `enquiries` | College enquiries only; includes privacy acknowledgement and status. |[m[41m[m
+docs/DATABASE.md:30: trailing whitespace.
+[32m+[m[32m| `security_enquiries` | Separate Security Services contact, organization, category and message fields. |[m[41m[m
+docs/DATABASE.md:31: trailing whitespace.
+[32m+[m[32m| `applications` | Course application contact fields, country, privacy acknowledgement and status. |[m[41m[m
+docs/DATABASE.md:54: trailing whitespace.
+[32m+[m[32mThe Milestone 6 migration adds `applications.country` and[m[41m[m
+docs/DATABASE.md:55: trailing whitespace.
+[32m+[m[32m`applications.privacy_accepted`, adds `enquiries.privacy_accepted`, and creates[m[41m[m
+docs/DATABASE.md:56: trailing whitespace.
+[32m+[m[32m`security_enquiries`. New College enquiry rows use `enquiry_type = 'college'`;[m[41m[m
+docs/DATABASE.md:57: trailing whitespace.
+[32m+[m[32mSecurity Services enquiries never use that table. There is no shared public[m[41m[m
+docs/DATABASE.md:58: trailing whitespace.
+[32m+[m[32msubmission table or workflow. Existing records, if any, retain the default[m[41m[m
+docs/DATABASE.md:59: trailing whitespace.
+[32m+[m[32munacknowledged privacy value.[m[41m[m
+docs/DATABASE.md:60: trailing whitespace.
+[32m+[m[41m[m
+docs/DATABASE.md:70: trailing whitespace.
+[32m+[m[32m- Applications can be submitted only for courses matching the public[m[41m[m
+docs/DATABASE.md:71: trailing whitespace.
+[32m+[m[32m  publication/date rules and `status = 'available'`. Proposed, development,[m[41m[m
+docs/DATABASE.md:72: trailing whitespace.
+[32m+[m[32m  draft, archived, future and unknown courses are rejected server-side.[m[41m[m
+docs/DATABASE.md:89: trailing whitespace.
+[32m+[m[32m- College enquiries are inserted into `enquiries` only with[m[41m[m
+docs/DATABASE.md:90: trailing whitespace.
+[32m+[m[32m  `enquiry_type = 'college'`; Security Services submissions are inserted into[m[41m[m
+docs/DATABASE.md:91: trailing whitespace.
+[32m+[m[32m  `security_enquiries`.[m[41m[m
+docs/DEPLOYMENT.md:26: trailing whitespace.
+[32m+[m[32m- Before enabling public submissions, approve the Privacy Notice's retention[m[41m[m
+docs/DEPLOYMENT.md:27: trailing whitespace.
+[32m+[m[32m  schedule and privacy contact. Configure a verified email sender and the[m[41m[m
+docs/DEPLOYMENT.md:28: trailing whitespace.
+[32m+[m[32m  appropriate College/Security Services recipients before enabling optional[m[41m[m
+docs/DEPLOYMENT.md:29: trailing whitespace.
+[32m+[m[32m  submission notifications.[m[41m[m
+docs/DEPLOYMENT.md:47: trailing whitespace.
+[32m+[m[32mThe public website, admin authentication, CMS content/media modules and[m[41m[m
+docs/DEPLOYMENT.md:48: trailing whitespace.
+[32m+[m[32mMilestone 6 public application/enquiry forms are implemented. Application and[m[41m[m
+docs/DEPLOYMENT.md:49: trailing whitespace.
+[32m+[m[32menquiry review workflows remain future work. Submission notifications and[m[41m[m
+docs/DEPLOYMENT.md:50: trailing whitespace.
+[32m+[m[32memail-based password reset stay disabled pending verified production[m[41m[m
+docs/DEPLOYMENT.md:51: trailing whitespace.
+[32m+[m[32mconfiguration.[m[41m[m
+docs/MODULES.md:11: trailing whitespace.
+[32m+[m[32m| Admissions | Implemented | Online application form accepts only published courses currently marked available; includes one-time confirmation reference. |[m[41m[m
+docs/MODULES.md:12: trailing whitespace.
+[32m+[m[32m| College enquiries | Implemented | Separate public form and storage from applications; no admin workflow yet. |[m[41m[m
+docs/MODULES.md:13: trailing whitespace.
+[32m+[m[32m| Security services | Implemented | Overview and dedicated Security Services enquiry form; warns against submitting sensitive security details. |[m[41m[m
+docs/MODULES.md:15: trailing whitespace.
+[32m+[m[32m| Contact | Implemented | General, College and Security Services pages use the verified phone/map and link to separate enquiry forms. |[m[41m[m
+docs/MODULES.md:24: trailing whitespace.
+[32m+[m[32m| Public applications and enquiries | Implemented | Separate public workflows for applications, College enquiries and Security Services enquiries; no record-management screens yet. |[m[41m[m
+docs/MODULES.md:28: trailing whitespace.
+[32m+[m[32mapplications and security enquiries remain role-protected placeholders[m[41m[m
+docs/MODULES.md:29: trailing whitespace.
+[32m+[m[32mreturning HTTP 501; they do not expose or modify submissions. Security Services[m[41m[m
+docs/MODULES.md:30: trailing whitespace.
+[32m+[m[32mOfficers have no course, application or CMS content permissions.[m[41m[m
+docs/README.md:28: trailing whitespace.
+[32m+[m[32mMilestone 6 adds public College applications, separate College and Security[m[41m[m
+docs/README.md:29: trailing whitespace.
+[32m+[m[32mServices enquiry forms, privacy acknowledgement, anti-abuse controls and[m[41m[m
+docs/README.md:30: trailing whitespace.
+[32m+[m[32msubmission persistence. Public submission administration remains future work.[m[41m[m
+docs/SECURITY.md:9: trailing whitespace.
+[32m+[m[32m- Public forms accept College applications, College enquiries and Security[m[41m[m
+docs/SECURITY.md:10: trailing whitespace.
+[32m+[m[32m  Services enquiries through separate routes and separate persistence paths.[m[41m[m
+docs/SECURITY.md:11: trailing whitespace.
+[32m+[m[32m  CMS image uploads remain available only to authorized administrators.[m[41m[m
+docs/SECURITY.md:28: trailing whitespace.
+[32m+[m[32m  Security Services Officers cannot access these CMS or college modules.[m[41m[m
+docs/SECURITY.md:29: trailing whitespace.
+[32m+[m[32m  Public submissions do not expose record retrieval routes; their[m[41m[m
+docs/SECURITY.md:30: trailing whitespace.
+[32m+[m[32m  administration interfaces remain out of scope until Milestone 7.[m[41m[m
+docs/SECURITY.md:32: trailing whitespace.
+[32m+[m[32m  operations and public form submissions are POST-only.[m[41m[m
+docs/SECURITY.md:33: trailing whitespace.
+[32m+[m[32m- Public submissions are server-validated and escaped on output. Application[m[41m[m
+docs/SECURITY.md:34: trailing whitespace.
+[32m+[m[32m  course IDs are rechecked against published, currently available courses.[m[41m[m
+docs/SECURITY.md:35: trailing whitespace.
+[32m+[m[32m  Honeypot fields, per-form IP throttling (five attempts per ten minutes),[m[41m[m
+docs/SECURITY.md:36: trailing whitespace.
+[32m+[m[32m  CSRF and one-hour session-backed one-time form tokens protect submissions.[m[41m[m
+docs/SECURITY.md:37: trailing whitespace.
+[32m+[m[32m  Successful POSTs redirect to a confirmation page and do not expose submitted[m[41m[m
+docs/SECURITY.md:38: trailing whitespace.
+[32m+[m[32m  details in URLs or confirmation content.[m[41m[m
+docs/SECURITY.md:39: trailing whitespace.
+[32m+[m[32m- Public submission records are written with a generic audit event in one[m[41m[m
+docs/SECURITY.md:40: trailing whitespace.
+[32m+[m[32m  database transaction. Audit records omit applicant/enquirer details and IP[m[41m[m
+docs/SECURITY.md:41: trailing whitespace.
+[32m+[m[32m  addresses. Application references use random bytes and are not sequential.[m[41m[m
+docs/SECURITY.md:42: trailing whitespace.
+[32m+[m[32m- The public Privacy Notice describes current handling but still needs an[m[41m[m
+docs/SECURITY.md:43: trailing whitespace.
+[32m+[m[32m  organisation-approved retention period and privacy contact before[m[41m[m
+docs/SECURITY.md:44: trailing whitespace.
+[32m+[m[32m  production use. Do not treat it as legal approval.[m[41m[m
+docs/SECURITY.md:45: trailing whitespace.
+[32m+[m[32m- Email notifications are disabled by default. They require[m[41m[m
+docs/SECURITY.md:46: trailing whitespace.
+[32m+[m[32m  `publicSubmissions.notificationsEnabled = true`, verified[m[41m[m
+docs/SECURITY.md:47: trailing whitespace.
+[32m+[m[32m  `email.fromEmail`/`email.fromName`, the appropriate[m[41m[m
+docs/SECURITY.md:48: trailing whitespace.
+[32m+[m[32m  `publicSubmissions.collegeRecipient` or[m[41m[m
+docs/SECURITY.md:49: trailing whitespace.
+[32m+[m[32m  `publicSubmissions.securityRecipient`, and mail transport settings. Email[m[41m[m
+docs/SECURITY.md:50: trailing whitespace.
+[32m+[m[32m  settings can be supplied through the ignored `.env`; errors are logged[m[41m[m
+docs/SECURITY.md:51: trailing whitespace.
+[32m+[m[32m  without exposing submitted details and do not roll back a stored submission.[m[41m[m
+docs/SECURITY.md:78: trailing whitespace.
+[32m+[m[32m## Before production[m[41m[m
+docs/SECURITY.md:86: trailing whitespace.
+[32m+[m[32m4. Confirm the Privacy Notice's retention schedule and privacy contact.[m[41m[m
+docs/SECURITY.md:87: trailing whitespace.
+[32m+[m[32m5. Configure and test verified notification sender/recipient details, or leave[m[41m[m
+docs/SECURITY.md:88: trailing whitespace.
+[32m+[m[32m   notifications disabled.[m[41m[m
+docs/SECURITY.md:89: trailing whitespace.
+[32m+[m[32m6. Log administrative changes without storing unnecessary sensitive data.[m[41m[m
+docs/TESTING.md:115: trailing whitespace.
+[32m+[m[41m[m
+docs/TESTING.md:116: trailing whitespace.
+[32m+[m[32m### Milestone 6 — public submissions[m[41m[m
+docs/TESTING.md:117: trailing whitespace.
+[32m+[m[41m[m
+docs/TESTING.md:118: trailing whitespace.
+[32m+[m[32m- Applied `2026-11-14-090000_AddPublicSubmissionWorkflows` as migration batch[m[41m[m
+docs/TESTING.md:119: trailing whitespace.
+[32m+[m[32m  4. Migration status passed, and the new table and added columns were[m[41m[m
+docs/TESTING.md:120: trailing whitespace.
+[32m+[m[32m  confirmed.[m[41m[m
+docs/TESTING.md:121: trailing whitespace.
+[32m+[m[32m- `php spark routes` registered application, College enquiry, Security[m[41m[m
+docs/TESTING.md:122: trailing whitespace.
+[32m+[m[32m  Services enquiry, confirmation and privacy routes.[m[41m[m
+docs/TESTING.md:123: trailing whitespace.
+[32m+[m[32m- PHP syntax checks passed for all files under `app/` and `tests/`.[m[41m[m
+docs/TESTING.md:124: trailing whitespace.
+[32m+[m[32m  `composer validate --no-check-publish` passed. The focused public-submission[m[41m[m
+docs/TESTING.md:125: trailing whitespace.
+[32m+[m[32m  unit tests passed (3 tests, 8 assertions).[m[41m[m
+docs/TESTING.md:126: trailing whitespace.
+[32m+[m[32m- Browser tests submitted one synthetic application, one College enquiry and[m[41m[m
+docs/TESTING.md:127: trailing whitespace.
+[32m+[m[32m  one Security Services enquiry. Each was stored with privacy acknowledgement[m[41m[m
+docs/TESTING.md:128: trailing whitespace.
+[32m+[m[32m  and a matching audit event; all synthetic submission rows, audit events and[m[41m[m
+docs/TESTING.md:129: trailing whitespace.
+[32m+[m[32m  the temporary available course were removed afterward.[m[41m[m
+docs/TESTING.md:130: trailing whitespace.
+[32m+[m[32m- A course changed to Proposed after the application form loaded was rejected[m[41m[m
+docs/TESTING.md:131: trailing whitespace.
+[32m+[m[32m  server-side with an explanatory validation message. A filled honeypot[m[41m[m
+docs/TESTING.md:132: trailing whitespace.
+[32m+[m[32m  returned HTTP 400, and a POST missing its CSRF token returned HTTP 403.[m[41m[m
+docs/TESTING.md:133: trailing whitespace.
+[32m+[m[32m- The confirmation page did not expose enquiry details and showed only the[m[41m[m
+docs/TESTING.md:134: trailing whitespace.
+[32m+[m[32m  random application reference for the application flow. Session-backed token[m[41m[m
+docs/TESTING.md:135: trailing whitespace.
+[32m+[m[32m  context binding and single-use behavior, plus throttler capacity enforcement,[m[41m[m
+docs/TESTING.md:136: trailing whitespace.
+[32m+[m[32m  passed unit tests.[m[41m[m
+docs/TESTING.md:137: trailing whitespace.
+[32m+[m[32m- Application, College enquiry, Security Services enquiry and Privacy Notice[m[41m[m
+docs/TESTING.md:138: trailing whitespace.
+[32m+[m[32m  pages had no horizontal overflow at 390px or 1440px viewport widths.[m[41m[m
+docs/TESTING.md:139: trailing whitespace.
+[32m+[m[32m- Full PHPUnit ran 8 tests: 6 passed and 2 database tests errored because the[m[41m[m
+docs/TESTING.md:140: trailing whitespace.
+[32m+[m[32m  PHP runtime does not have `sqlite3`. Browser/database checks used the[m[41m[m
+docs/TESTING.md:141: trailing whitespace.
+[32m+[m[32m  configured local MariaDB. Email notifications remain disabled and were not[m[41m[m
+docs/TESTING.md:142: trailing whitespace.
+[32m+[m[32m  tested because verified sender and recipients are not configured.[m[41m[m
+docs/TESTING.md:143: trailing whitespace.
+[32m+[m[32m- The Privacy Notice still needs organisation approval, a retention schedule[m[41m[m
+docs/TESTING.md:144: trailing whitespace.
+[32m+[m[32m  and a dedicated privacy contact before production use. Admin review and[m[41m[m
+docs/TESTING.md:145: trailing whitespace.
+[32m+[m[32m  follow-up workflows remain Milestone 7.[m[41m[m
+public/assets/css/site.css:1433: trailing whitespace.
+[32m+[m[41m[m
+public/assets/css/site.css:1434: trailing whitespace.
+[32m+[m[32m.submission-layout {[m[41m[m
+public/assets/css/site.css:1435: trailing whitespace.
+[32m+[m[32m    display: grid;[m[41m[m
+public/assets/css/site.css:1436: trailing whitespace.
+[32m+[m[32m    grid-template-columns: minmax(0, 1.5fr) minmax(240px, .7fr);[m[41m[m
+public/assets/css/site.css:1437: trailing whitespace.
+[32m+[m[32m    align-items: start;[m[41m[m
+public/assets/css/site.css:1438: trailing whitespace.
+[32m+[m[32m    gap: clamp(2rem, 6vw, 5rem);[m[41m[m
+public/assets/css/site.css:1439: trailing whitespace.
+[32m+[m[32m}[m[41m[m
+public/assets/css/site.css:1440: trailing whitespace.
+[32m+[m[41m[m
+public/assets/css/site.css:1441: trailing whitespace.
+[32m+[m[32m.public-form {[m[41m[m
+public/assets/css/site.css:1442: trailing whitespace.
+[32m+[m[32m    display: grid;[m[41m[m
+public/assets/css/site.css:1443: trailing whitespace.
+[32m+[m[32m    gap: .75rem;[m[41m[m
+public/assets/css/site.css:1444: trailing whitespace.
+[32m+[m[32m}[m[41m[m
+public/assets/css/site.css:1445: trailing whitespace.
+[32m+[m[41m[m
+public/assets/css/site.css:1446: trailing whitespace.
+[32m+[m[32m.public-form label {[m[41m[m
+public/assets/css/site.css:1447: trailing whitespace.
+[32m+[m[32m    color: var(--brand-ink);[m[41m[m
+public/assets/css/site.css:1448: trailing whitespace.
+[32m+[m[32m    font-size: .9rem;[m[41m[m
+public/assets/css/site.css:1449: trailing whitespace.
+[32m+[m[32m    font-weight: 700;[m[41m[m
+public/assets/css/site.css:1450: trailing whitespace.
+[32m+[m[32m}[m[41m[m
+public/assets/css/site.css:1451: trailing whitespace.
+[32m+[m[41m[m
+public/assets/css/site.css:1452: trailing whitespace.
+[32m+[m[32m.public-form input:not([type="checkbox"]),[m[41m[m
+public/assets/css/site.css:1453: trailing whitespace.
+[32m+[m[32m.public-form select,[m[41m[m
+public/assets/css/site.css:1454: trailing whitespace.
+[32m+[m[32m.public-form textarea {[m[41m[m
+public/assets/css/site.css:1455: trailing whitespace.
+[32m+[m[32m    width: 100%;[m[41m[m
+public/assets/css/site.css:1456: trailing whitespace.
+[32m+[m[32m    min-height: 48px;[m[41m[m
+public/assets/css/site.css:1457: trailing whitespace.
+[32m+[m[32m    padding: .75rem .85rem;[m[41m[m
+public/assets/css/site.css:1458: trailing whitespace.
+[32m+[m[32m    color: var(--text);[m[41m[m
+public/assets/css/site.css:1459: trailing whitespace.
+[32m+[m[32m    background: var(--brand-white);[m[41m[m
+public/assets/css/site.css:1460: trailing whitespace.
+[32m+[m[32m    border: 1px solid #bbb8b1;[m[41m[m
+public/assets/css/site.css:1461: trailing whitespace.
+[32m+[m[32m    border-radius: 0;[m[41m[m
+public/assets/css/site.css:1462: trailing whitespace.
+[32m+[m[32m    font: inherit;[m[41m[m
+public/assets/css/site.css:1463: trailing whitespace.
+[32m+[m[32m}[m[41m[m
+public/assets/css/site.css:1464: trailing whitespace.
+[32m+[m[41m[m
+public/assets/css/site.css:1465: trailing whitespace.
+[32m+[m[32m.public-form textarea {[m[41m[m
+public/assets/css/site.css:1466: trailing whitespace.
+[32m+[m[32m    min-height: 140px;[m[41m[m
+public/assets/css/site.css:1467: trailing whitespace.
+[32m+[m[32m    resize: vertical;[m[41m[m
+public/assets/css/site.css:1468: trailing whitespace.
+[32m+[m[32m}[m[41m[m
+public/assets/css/site.css:1469: trailing whitespace.
+[32m+[m[41m[m
+public/assets/css/site.css:1470: trailing whitespace.
+[32m+[m[32m.public-form input:focus,[m[41m[m
+public/assets/css/site.css:1471: trailing whitespace.
+[32m+[m[32m.public-form select:focus,[m[41m[m
+public/assets/css/site.css:1472: trailing whitespace.
+[32m+[m[32m.public-form textarea:focus {[m[41m[m
+public/assets/css/site.css:1473: trailing whitespace.
+[32m+[m[32m    border-color: var(--brand-gold);[m[41m[m
+public/assets/css/site.css:1474: trailing whitespace.
+[32m+[m[32m    outline: 3px solid rgba(184, 152, 96, .25);[m[41m[m
+public/assets/css/site.css:1475: trailing whitespace.
+[32m+[m[32m}[m[41m[m
+public/assets/css/site.css:1476: trailing whitespace.
+[32m+[m[41m[m
+public/assets/css/site.css:1477: trailing whitespace.
+[32m+[m[32m.submission-form-grid {[m[41m[m
+public/assets/css/site.css:1478: trailing whitespace.
+[32m+[m[32m    display: grid;[m[41m[m
+public/assets/css/site.css:1479: trailing whitespace.
+[32m+[m[32m    grid-template-columns: repeat(2, minmax(0, 1fr));[m[41m[m
+public/assets/css/site.css:1480: trailing whitespace.
+[32m+[m[32m    gap: 1rem;[m[41m[m
+public/assets/css/site.css:1481: trailing whitespace.
+[32m+[m[32m}[m[41m[m
+public/assets/css/site.css:1482: trailing whitespace.
+[32m+[m[41m[m
+public/assets/css/site.css:1483: trailing whitespace.
+[32m+[m[32m.submission-form-grid > div {[m[41m[m
+public/assets/css/site.css:1484: trailing whitespace.
+[32m+[m[32m    display: grid;[m[41m[m
+public/assets/css/site.css:1485: trailing whitespace.
+[32m+[m[32m    align-content: start;[m[41m[m
+public/assets/css/site.css:1486: trailing whitespace.
+[32m+[m[32m    gap: .75rem;[m[41m[m
+public/assets/css/site.css:1487: trailing whitespace.
+[32m+[m[32m}[m[41m[m
+public/assets/css/site.css:1488: trailing whitespace.
+[32m+[m[41m[m
+public/assets/css/site.css:1489: trailing whitespace.
+[32m+[m[32m.privacy-consent {[m[41m[m
+public/assets/css/site.css:1490: trailing whitespace.
+[32m+[m[32m    display: grid;[m[41m[m
+public/assets/css/site.css:1491: trailing whitespace.
+[32m+[m[32m    grid-template-columns: auto minmax(0, 1fr);[m[41m[m
+public/assets/css/site.css:1492: trailing whitespace.
+[32m+[m[32m    align-items: start;[m[41m[m
+public/assets/css/site.css:1493: trailing whitespace.
+[32m+[m[32m    gap: .7rem;[m[41m[m
+public/assets/css/site.css:1494: trailing whitespace.
+[32m+[m[32m    margin-block: .75rem;[m[41m[m
+public/assets/css/site.css:1495: trailing whitespace.
+[32m+[m[32m}[m[41m[m
+public/assets/css/site.css:1496: trailing whitespace.
+[32m+[m[41m[m
+public/assets/css/site.css:1497: trailing whitespace.
+[32m+[m[32m.privacy-consent input {[m[41m[m
+public/assets/css/site.css:1498: trailing whitespace.
+[32m+[m[32m    width: 1.15rem;[m[41m[m
+public/assets/css/site.css:1499: trailing whitespace.
+[32m+[m[32m    height: 1.15rem;[m[41m[m
+public/assets/css/site.css:1500: trailing whitespace.
+[32m+[m[32m    margin: .2rem 0 0;[m[41m[m
+public/assets/css/site.css:1501: trailing whitespace.
+[32m+[m[32m    accent-color: var(--brand-ink);[m[41m[m
+public/assets/css/site.css:1502: trailing whitespace.
+[32m+[m[32m}[m[41m[m
+public/assets/css/site.css:1503: trailing whitespace.
+[32m+[m[41m[m
+public/assets/css/site.css:1504: trailing whitespace.
+[32m+[m[32m.privacy-consent label {[m[41m[m
+public/assets/css/site.css:1505: trailing whitespace.
+[32m+[m[32m    color: var(--muted);[m[41m[m
+public/assets/css/site.css:1506: trailing whitespace.
+[32m+[m[32m    font-weight: 400;[m[41m[m
+public/assets/css/site.css:1507: trailing whitespace.
+[32m+[m[32m}[m[41m[m
+public/assets/css/site.css:1508: trailing whitespace.
+[32m+[m[41m[m
+public/assets/css/site.css:1509: trailing whitespace.
+[32m+[m[32m.privacy-consent a,[m[41m[m
+public/assets/css/site.css:1510: trailing whitespace.
+[32m+[m[32m.privacy-content a {[m[41m[m
+public/assets/css/site.css:1511: trailing whitespace.
+[32m+[m[32m    color: #80683e;[m[41m[m
+public/assets/css/site.css:1512: trailing whitespace.
+[32m+[m[32m    font-weight: 700;[m[41m[m
+public/assets/css/site.css:1513: trailing whitespace.
+[32m+[m[32m    text-decoration: underline;[m[41m[m
+public/assets/css/site.css:1514: trailing whitespace.
+[32m+[m[32m    text-underline-offset: .2em;[m[41m[m
+public/assets/css/site.css:1515: trailing whitespace.
+[32m+[m[32m}[m[41m[m
+public/assets/css/site.css:1516: trailing whitespace.
+[32m+[m[41m[m
+public/assets/css/site.css:1517: trailing whitespace.
+[32m+[m[32m.form-optional {[m[41m[m
+public/assets/css/site.css:1518: trailing whitespace.
+[32m+[m[32m    color: var(--muted);[m[41m[m
+public/assets/css/site.css:1519: trailing whitespace.
+[32m+[m[32m    font-size: .82rem;[m[41m[m
+public/assets/css/site.css:1520: trailing whitespace.
+[32m+[m[32m    font-weight: 400;[m[41m[m
+public/assets/css/site.css:1521: trailing whitespace.
+[32m+[m[32m}[m[41m[m
+public/assets/css/site.css:1522: trailing whitespace.
+[32m+[m[41m[m
+public/assets/css/site.css:1523: trailing whitespace.
+[32m+[m[32m.submission-honeypot {[m[41m[m
+public/assets/css/site.css:1524: trailing whitespace.
+[32m+[m[32m    position: absolute;[m[41m[m
+public/assets/css/site.css:1525: trailing whitespace.
+[32m+[m[32m    left: -10000px;[m[41m[m
+public/assets/css/site.css:1526: trailing whitespace.
+[32m+[m[32m    width: 1px;[m[41m[m
+public/assets/css/site.css:1527: trailing whitespace.
+[32m+[m[32m    height: 1px;[m[41m[m
+public/assets/css/site.css:1528: trailing whitespace.
+[32m+[m[32m    overflow: hidden;[m[41m[m
+public/assets/css/site.css:1529: trailing whitespace.
+[32m+[m[32m}[m[41m[m
+public/assets/css/site.css:1530: trailing whitespace.
+[32m+[m[41m[m
+public/assets/css/site.css:1531: trailing whitespace.
+[32m+[m[32m.form-errors {[m[41m[m
+public/assets/css/site.css:1532: trailing whitespace.
+[32m+[m[32m    margin-bottom: 1.5rem;[m[41m[m
+public/assets/css/site.css:1533: trailing whitespace.
+[32m+[m[32m    padding: 1rem 1.2rem;[m[41m[m
+public/assets/css/site.css:1534: trailing whitespace.
+[32m+[m[32m    color: #712b24;[m[41m[m
+public/assets/css/site.css:1535: trailing whitespace.
+[32m+[m[32m    background: #fff1ef;[m[41m[m
+public/assets/css/site.css:1536: trailing whitespace.
+[32m+[m[32m    border-left: 4px solid #b44237;[m[41m[m
+public/assets/css/site.css:1537: trailing whitespace.
+[32m+[m[32m}[m[41m[m
+public/assets/css/site.css:1538: trailing whitespace.
+[32m+[m[41m[m
+public/assets/css/site.css:1539: trailing whitespace.
+[32m+[m[32m.form-errors h2 {[m[41m[m
+public/assets/css/site.css:1540: trailing whitespace.
+[32m+[m[32m    margin: 0;[m[41m[m
+public/assets/css/site.css:1541: trailing whitespace.
+[32m+[m[32m    font-size: 1rem;[m[41m[m
+public/assets/css/site.css:1542: trailing whitespace.
+[32m+[m[32m}[m[41m[m
+public/assets/css/site.css:1543: trailing whitespace.
+[32m+[m[41m[m
+public/assets/css/site.css:1544: trailing whitespace.
+[32m+[m[32m.form-errors ul {[m[41m[m
+public/assets/css/site.css:1545: trailing whitespace.
+[32m+[m[32m    margin: .5rem 0 0;[m[41m[m
+public/assets/css/site.css:1546: trailing whitespace.
+[32m+[m[32m    padding-left: 1.3rem;[m[41m[m
+public/assets/css/site.css:1547: trailing whitespace.
+[32m+[m[32m}[m[41m[m
+public/assets/css/site.css:1548: trailing whitespace.
+[32m+[m[41m[m
+public/assets/css/site.css:1549: trailing whitespace.
+[32m+[m[32m.submission-aside {[m[41m[m
+public/assets/css/site.css:1550: trailing whitespace.
+[32m+[m[32m    padding: clamp(1.3rem, 3vw, 2rem);[m[41m[m
+public/assets/css/site.css:1551: trailing whitespace.
+[32m+[m[32m    background: var(--brand-paper);[m[41m[m
+public/assets/css/site.css:1552: trailing whitespace.
+[32m+[m[32m    border-top: 3px solid var(--brand-gold);[m[41m[m
+public/assets/css/site.css:1553: trailing whitespace.
+[32m+[m[32m}[m[41m[m
+public/assets/css/site.css:1554: trailing whitespace.
+[32m+[m[41m[m
+public/assets/css/site.css:1555: trailing whitespace.
+[32m+[m[32m.submission-aside h2,[m[41m[m
+public/assets/css/site.css:1556: trailing whitespace.
+[32m+[m[32m.privacy-content h2 {[m[41m[m
+public/assets/css/site.css:1557: trailing whitespace.
+[32m+[m[32m    margin-top: 0;[m[41m[m
+public/assets/css/site.css:1558: trailing whitespace.
+[32m+[m[32m    color: var(--brand-ink);[m[41m[m
+public/assets/css/site.css:1559: trailing whitespace.
+[32m+[m[32m    font-family: var(--font-heading);[m[41m[m
+public/assets/css/site.css:1560: trailing whitespace.
+[32m+[m[32m    font-size: 1.5rem;[m[41m[m
+public/assets/css/site.css:1561: trailing whitespace.
+[32m+[m[32m    font-weight: 500;[m[41m[m
+public/assets/css/site.css:1562: trailing whitespace.
+[32m+[m[32m    line-height: 1.2;[m[41m[m
+public/assets/css/site.css:1563: trailing whitespace.
+[32m+[m[32m}[m[41m[m
+public/assets/css/site.css:1564: trailing whitespace.
+[32m+[m[41m[m
+public/assets/css/site.css:1565: trailing whitespace.
+[32m+[m[32m.submission-aside p,[m[41m[m
+public/assets/css/site.css:1566: trailing whitespace.
+[32m+[m[32m.privacy-content p {[m[41m[m
+public/assets/css/site.css:1567: trailing whitespace.
+[32m+[m[32m    color: var(--muted);[m[41m[m
+public/assets/css/site.css:1568: trailing whitespace.
+[32m+[m[32m}[m[41m[m
+public/assets/css/site.css:1569: trailing whitespace.
+[32m+[m[41m[m
+public/assets/css/site.css:1570: trailing whitespace.
+[32m+[m[32m.submission-aside .text-link {[m[41m[m
+public/assets/css/site.css:1571: trailing whitespace.
+[32m+[m[32m    display: inline-block;[m[41m[m
+public/assets/css/site.css:1572: trailing whitespace.
+[32m+[m[32m    margin-top: .5rem;[m[41m[m
+public/assets/css/site.css:1573: trailing whitespace.
+[32m+[m[32m}[m[41m[m
+public/assets/css/site.css:1574: trailing whitespace.
+[32m+[m[41m[m
+public/assets/css/site.css:1575: trailing whitespace.
+[32m+[m[32m.security-form-warning a {[m[41m[m
+public/assets/css/site.css:1576: trailing whitespace.
+[32m+[m[32m    color: var(--brand-ink);[m[41m[m
+public/assets/css/site.css:1577: trailing whitespace.
+[32m+[m[32m    font-weight: 800;[m[41m[m
+public/assets/css/site.css:1578: trailing whitespace.
+[32m+[m[32m    text-decoration: underline;[m[41m[m
+public/assets/css/site.css:1579: trailing whitespace.
+[32m+[m[32m}[m[41m[m
+public/assets/css/site.css:1580: trailing whitespace.
+[32m+[m[41m[m
+public/assets/css/site.css:1581: trailing whitespace.
+[32m+[m[32m.submission-confirmation,[m[41m[m
+public/assets/css/site.css:1582: trailing whitespace.
+[32m+[m[32m.privacy-content {[m[41m[m
+public/assets/css/site.css:1583: trailing whitespace.
+[32m+[m[32m    max-width: 850px;[m[41m[m
+public/assets/css/site.css:1584: trailing whitespace.
+[32m+[m[32m}[m[41m[m
+public/assets/css/site.css:1585: trailing whitespace.
+[32m+[m[41m[m
+public/assets/css/site.css:1586: trailing whitespace.
+[32m+[m[32m.submission-confirmation h1 {[m[41m[m
+public/assets/css/site.css:1587: trailing whitespace.
+[32m+[m[32m    margin: .5rem 0 1rem;[m[41m[m
+public/assets/css/site.css:1588: trailing whitespace.
+[32m+[m[32m    color: var(--brand-ink);[m[41m[m
+public/assets/css/site.css:1589: trailing whitespace.
+[32m+[m[32m    font-family: var(--font-heading);[m[41m[m
+public/assets/css/site.css:1590: trailing whitespace.
+[32m+[m[32m    font-size: clamp(2rem, 5vw, 3.5rem);[m[41m[m
+public/assets/css/site.css:1591: trailing whitespace.
+[32m+[m[32m    font-weight: 500;[m[41m[m
+public/assets/css/site.css:1592: trailing whitespace.
+[32m+[m[32m    line-height: 1.12;[m[41m[m
+public/assets/css/site.css:1593: trailing whitespace.
+[32m+[m[32m}[m[41m[m
+public/assets/css/site.css:1594: trailing whitespace.
+[32m+[m[41m[m
+public/assets/css/site.css:1595: trailing whitespace.
+[32m+[m[32m.submission-confirmation .section-cta {[m[41m[m
+public/assets/css/site.css:1596: trailing whitespace.
+[32m+[m[32m    justify-content: flex-start;[m[41m[m
+public/assets/css/site.css:1597: trailing whitespace.
+[32m+[m[32m    margin-top: 2rem;[m[41m[m
+public/assets/css/site.css:1598: trailing whitespace.
+[32m+[m[32m}[m[41m[m
+public/assets/css/site.css:1599: trailing whitespace.
+[32m+[m[41m[m
+public/assets/css/site.css:1600: trailing whitespace.
+[32m+[m[32m.privacy-content h2:not(:first-child) {[m[41m[m
+public/assets/css/site.css:1601: trailing whitespace.
+[32m+[m[32m    margin-top: 2.5rem;[m[41m[m
+public/assets/css/site.css:1602: trailing whitespace.
+[32m+[m[32m}[m[41m[m
+public/assets/css/site.css:1603: trailing whitespace.
+[32m+[m[41m[m
+public/assets/css/site.css:1604: trailing whitespace.
+[32m+[m[32m@media (max-width: 760px) {[m[41m[m
+public/assets/css/site.css:1605: trailing whitespace.
+[32m+[m[32m    .submission-layout,[m[41m[m
+public/assets/css/site.css:1606: trailing whitespace.
+[32m+[m[32m    .submission-form-grid {[m[41m[m
+public/assets/css/site.css:1607: trailing whitespace.
+[32m+[m[32m        grid-template-columns: 1fr;[m[41m[m
+public/assets/css/site.css:1608: trailing whitespace.
+[32m+[m[32m    }[m[41m[m
+public/assets/css/site.css:1609: trailing whitespace.
+[32m+[m[41m[m
+public/assets/css/site.css:1610: trailing whitespace.
+[32m+[m[32m    .submission-aside {[m[41m[m
+public/assets/css/site.css:1611: trailing whitespace.
+[32m+[m[32m        order: -1;[m[41m[m
+public/assets/css/site.css:1612: trailing whitespace.
+[32m+[m[32m    }[m[41m[m
+public/assets/css/site.css:1613: trailing whitespace.
+[32m+[m[32m}[m[41m[m

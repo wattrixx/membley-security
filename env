@@ -67,3 +67,25 @@
 #--------------------------------------------------------------------
 
 # logger.threshold = 4
+
+#--------------------------------------------------------------------
+# EMAIL (keep real credentials in the ignored .env file)
+#--------------------------------------------------------------------
+
+# email.fromEmail =
+# email.fromName =
+# email.protocol = smtp
+# email.SMTPHost =
+# email.SMTPUser =
+# email.SMTPPass =
+# email.SMTPPort = 587
+# email.SMTPTimeout = 5
+# email.SMTPCrypto = tls
+
+#--------------------------------------------------------------------
+# PUBLIC SUBMISSION NOTIFICATIONS (disabled until verified)
+#--------------------------------------------------------------------
+
+# publicSubmissions.notificationsEnabled = false
+# publicSubmissions.collegeRecipient =
+# publicSubmissions.securityRecipient =

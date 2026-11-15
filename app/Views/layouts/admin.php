@@ -56,14 +56,13 @@ $roleLabels = array_map(
                 <a class="admin-nav-link" href="<?= url_to('admin.cms.courses') ?>">Courses</a>
             <?php endif; ?>
             <?php if ($currentUser->can('college.applications.view')): ?>
-                <span class="admin-nav-link is-disabled" aria-disabled="true">
-                    Applications <small>Later milestone</small>
-                </span>
+                <a class="admin-nav-link" href="<?= url_to('admin.applications') ?>">Applications</a>
+            <?php endif; ?>
+            <?php if ($currentUser->can('college.enquiries.view')): ?>
+                <a class="admin-nav-link" href="<?= url_to('admin.college.enquiries') ?>">College enquiries</a>
             <?php endif; ?>
             <?php if ($currentUser->can('security.enquiries.view')): ?>
-                <span class="admin-nav-link is-disabled" aria-disabled="true">
-                    Security enquiries <small>Later milestone</small>
-                </span>
+                <a class="admin-nav-link" href="<?= url_to('admin.security.enquiries') ?>">Security enquiries</a>
             <?php endif; ?>
 
             <?php if ($currentUser->can('admin.settings.view')): ?>

@@ -84,3 +84,15 @@
 - Updated the dashboard's Security Services count to use the dedicated table.
 - Public submissions can be stored and confirmed, but administrative review
   and follow-up remain Milestone 7 work.
+
+## 2026-11-15 — Milestone 7
+
+- Added separate permission-protected application, College enquiry and
+  Security enquiry queues with search, filters, pagination, detail views,
+  statuses and private notes with optional follow-up dates.
+- Added the `submission_notes` table and reused `audit_logs` for status and
+  note events without storing note contents or submitted personal data.
+- Added permission-filtered dashboard counts and navigation; no deletion,
+  assignment, reminders, exports, payments or production deployment.
+- Added isolated integration tests and retained the existing public forms.
+  See [Testing](TESTING.md) for results and uncompleted browser checks.

@@ -44,8 +44,9 @@ before scheduling production deployment.
 7. Confirm the public document root does not expose application or environment
    files.
 
-The public website, admin authentication, CMS content/media modules and
-Milestone 6 public application/enquiry forms are implemented. Application and
-enquiry review workflows remain future work. Submission notifications and
-email-based password reset stay disabled pending verified production
-configuration.
+The public website, admin authentication, CMS content/media modules, public
+forms and separate Milestone 7 submission review workflows are implemented.
+Before release, apply the reviewed submission-notes migration after backing up
+the database, verify role boundaries and test the new admin interfaces on
+desktop and mobile. Submission notifications and email-based password reset
+stay disabled pending verified production configuration.

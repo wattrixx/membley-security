@@ -178,10 +178,51 @@ $routes->group('admin', ['filter' => $adminFilters], static function ($routes): 
         'filter' => 'permission:content.media.manage',
     ]);
 
-    $routes->get('college/applications', 'Admin\FutureModules::applications', [
+    $routes->get('college/applications', 'Admin\Applications::index', [
+        'as' => 'admin.applications',
         'filter' => 'permission:college.applications.view',
     ]);
-    $routes->get('security/enquiries', 'Admin\FutureModules::securityEnquiries', [
+    $routes->post('college/applications/filter', 'Admin\Applications::filter', [
+        'as' => 'admin.applications.filter', 'filter' => 'permission:college.applications.view',
+    ]);
+    $routes->get('college/applications/(:num)', 'Admin\Applications::show/$1', [
+        'as' => 'admin.applications.show', 'filter' => 'permission:college.applications.view',
+    ]);
+    $routes->post('college/applications/(:num)/status', 'Admin\Applications::status/$1', [
+        'as' => 'admin.applications.status', 'filter' => 'permission:college.applications.manage',
+    ]);
+    $routes->post('college/applications/(:num)/notes', 'Admin\Applications::note/$1', [
+        'as' => 'admin.applications.note', 'filter' => 'permission:college.applications.manage',
+    ]);
+    $routes->get('college/enquiries', 'Admin\CollegeEnquiries::index', [
+        'as' => 'admin.college.enquiries', 'filter' => 'permission:college.enquiries.view',
+    ]);
+    $routes->post('college/enquiries/filter', 'Admin\CollegeEnquiries::filter', [
+        'as' => 'admin.college.enquiries.filter', 'filter' => 'permission:college.enquiries.view',
+    ]);
+    $routes->get('college/enquiries/(:num)', 'Admin\CollegeEnquiries::show/$1', [
+        'as' => 'admin.college.enquiries.show', 'filter' => 'permission:college.enquiries.view',
+    ]);
+    $routes->post('college/enquiries/(:num)/status', 'Admin\CollegeEnquiries::status/$1', [
+        'as' => 'admin.college.enquiries.status', 'filter' => 'permission:college.enquiries.manage',
+    ]);
+    $routes->post('college/enquiries/(:num)/notes', 'Admin\CollegeEnquiries::note/$1', [
+        'as' => 'admin.college.enquiries.note', 'filter' => 'permission:college.enquiries.manage',
+    ]);
+    $routes->get('security/enquiries', 'Admin\SecurityEnquiries::index', [
+        'as' => 'admin.security.enquiries',
         'filter' => 'permission:security.enquiries.view',
+    ]);
+    $routes->post('security/enquiries/filter', 'Admin\SecurityEnquiries::filter', [
+        'as' => 'admin.security.enquiries.filter', 'filter' => 'permission:security.enquiries.view',
+    ]);
+    $routes->get('security/enquiries/(:num)', 'Admin\SecurityEnquiries::show/$1', [
+        'as' => 'admin.security.enquiries.show', 'filter' => 'permission:security.enquiries.view',
+    ]);
+    $routes->post('security/enquiries/(:num)/status', 'Admin\SecurityEnquiries::status/$1', [
+        'as' => 'admin.security.enquiries.status', 'filter' => 'permission:security.enquiries.manage',
+    ]);
+    $routes->post('security/enquiries/(:num)/notes', 'Admin\SecurityEnquiries::note/$1', [
+        'as' => 'admin.security.enquiries.note', 'filter' => 'permission:security.enquiries.manage',
     ]);
 });

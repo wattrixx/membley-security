@@ -143,3 +143,29 @@ models, views or publication rules.
 - The Privacy Notice still needs organisation approval, a retention schedule
   and a dedicated privacy contact before production use. Admin review and
   follow-up workflows remain Milestone 7.
+
+### Milestone 7 — submission management
+
+- The additive `AddSubmissionNotes` migration was applied locally in batch 5;
+  route registration and migration status were checked.
+- Focused in-memory SQLite integration tests cover all three workflows and
+  their public submission paths, role isolation, non-College enquiry ID
+  rejection, internal note isolation and escaping, audit events, invalid
+  status and unauthorized writes, CSRF rejection, search, date filtering and
+  application pagination. Database test fixtures are synthetic and isolated.
+- The normal PHP runtime does not have SQLite enabled. For this verification,
+  a matching SQLite extension was extracted temporarily without installing
+  system packages; the test suite was run with that extension explicitly
+  loaded and coverage disabled: 18 tests and 66 assertions passed. PHP syntax
+  checks passed for all 141 application/test files, Composer validation and
+  whitespace checks passed, and route/migration checks succeeded.
+  Install/enable SQLite in the normal test runtime before relying on the
+  standard `composer test` command.
+- New admin desktop/mobile browser checks and end-to-end testing against an
+  isolated MariaDB database were not completed. The local MariaDB migration
+  was checked, but do not treat SQLite integration tests as a substitute for
+  browser and target-database verification before release.
+- Public homepage, courses, news, both enquiry forms and admin login returned
+  HTTP 200 locally. The homepage had no horizontal overflow at 390px or 1440px.
+  Existing homepage and Security Services default copy incorrectly say online
+  enquiries are unavailable; this remains a release follow-up.

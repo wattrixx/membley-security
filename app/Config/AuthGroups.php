@@ -90,6 +90,8 @@ class AuthGroups extends ShieldAuthGroups
         'college.courses.manage'       => 'Manage courses.',
         'college.applications.view'    => 'View applications.',
         'college.applications.manage'  => 'Manage applications.',
+        'college.enquiries.view'       => 'View college enquiries.',
+        'college.enquiries.manage'     => 'Manage college enquiries.',
         'security.dashboard.view'      => 'View security-services administration.',
         'security.enquiries.view'      => 'View security-services enquiries.',
         'security.enquiries.manage'    => 'Manage security-services enquiries.',

@@ -26,8 +26,17 @@
 - CMS routes enforce role permissions server-side. Admissions Officers manage
   courses; Content Managers manage pages, news, announcements and media;
   Security Services Officers cannot access these CMS or college modules.
-  Public submissions do not expose record retrieval routes; their
-  administration interfaces remain out of scope until Milestone 7.
+  Public submissions do not expose record retrieval routes.
+- Application, College enquiry and Security Services enquiry admin routes
+  require their own view/manage permissions; concrete controllers repeat the
+  authorization checks before reading or writing. College enquiries are
+  restricted to the College type, and notes/history are scoped to the
+  workflow and record. Numeric IDs and internal Security enquiry references
+  do not grant access. Content Managers cannot access submission records.
+- Admin submission status changes and note additions commit with audit events.
+  Audit details contain only status values, not submitted details or note text.
+  Internal notes are escaped, private to authorized administrators and have
+  no edit/delete route. Session-backed filters avoid placing searches in URLs.
 - CSRF protection is enabled globally in session mode. State-changing admin
   operations and public form submissions are POST-only.
 - Public submissions are server-validated and escaped on output. Application

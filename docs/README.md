@@ -25,6 +25,6 @@ they differ, prefer the implementation status recorded here.
 
 ## Current milestone
 
-Milestone 6 adds public College applications, separate College and Security
-Services enquiry forms, privacy acknowledgement, anti-abuse controls and
-submission persistence. Public submission administration remains future work.
+Milestone 7 adds separately authorized administrative review of College
+applications, College enquiries and Security Services enquiries. See
+[Testing](TESTING.md) and [Backlog](BACKLOG.md) for remaining release checks.

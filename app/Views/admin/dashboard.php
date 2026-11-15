@@ -16,7 +16,7 @@
             <strong class="admin-summary-count"><?= esc((string) $card['count']) ?></strong>
             <p><?= esc($card['description']) ?></p>
             <?php if ($card['available']): ?>
-                <a class="admin-card-link" href="<?= esc($card['href'], 'attr') ?>">Open account management</a>
+                <a class="admin-card-link" href="<?= esc($card['href'], 'attr') ?>">Open module</a>
             <?php else: ?>
                 <span class="admin-future-label">Management is not implemented yet.</span>
             <?php endif; ?>

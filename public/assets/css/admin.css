@@ -516,6 +516,15 @@ a.admin-nav-link:focus-visible {
     width: min(100%, 650px);
 }
 
+.submission-panel {
+    margin-bottom: 1.2rem;
+    overflow-wrap: anywhere;
+}
+
+.submission-panel dd {
+    margin: .25rem 0 1rem;
+}
+
 .admin-form label {
     margin-top: .45rem;
     color: var(--brand-ink);

@@ -13,6 +13,8 @@ Items remain outstanding unless marked implemented in the current source.
 - Review image choices and final branding with the client.
 - Have the organisation approve the public Privacy Notice, including a
   retention schedule and dedicated privacy contact, before production form use.
+- Correct the pre-existing homepage and Security Services default page copy
+  that says online enquiry forms are unavailable, although those forms exist.
 
 ## CMS follow-up
 
@@ -23,16 +25,20 @@ Items remain outstanding unless marked implemented in the current source.
   move uploads outside the document root if Apache protections are unavailable.
 - Decide whether to add managed website settings; settings CRUD is not part of
   the completed content modules.
-- Implement Milestone 7 application and enquiry review/assignment workflows
-  with verified Admissions/Security Services access boundaries.
+- Consider explicit enquiry assignment and reminders separately; Milestone 7
+  records optional follow-up dates on notes but does not assign cases or send
+  reminders.
 - Configure and verify email sender/recipients before enabling submission
   notifications; notifications are disabled by default.
 - Review foreign-key and status-integrity constraints before a future migration.
 
 ## Quality and release
 
-- Enable the SQLite3 PHP extension for database tests and a coverage driver
-  for PHPUnit coverage reports.
+- Enable the SQLite3 PHP extension in the normal development/CI runtime and a
+  coverage driver for PHPUnit coverage reports.
+- Browser-test the Milestone 7 admin queues and detail forms on desktop and
+  mobile, and verify workflows and role boundaries with an isolated MariaDB
+  test database before release.
 - Add focused tests for routes, carousel markup, content rendering and future
   form/CMS behavior.
 - Validate the responsive design with the client and supported browsers.

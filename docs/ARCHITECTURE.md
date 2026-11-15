@@ -28,21 +28,27 @@ application.
 8. Explicit public POST routes handle College applications, College enquiries
    and Security Services enquiries. The workflows validate input, store each
    type separately and redirect to a session-backed confirmation page.
+9. Three separately authorized administration routes review those submissions.
+   The shared controller implementation fixes each route's table, entity type
+   and permissions in its concrete controller; College enquiry queries also
+   require `enquiry_type = 'college'`. Filters are kept in the administrator's
+   session instead of URLs. Private notes and audit history are retrieved only
+   after the matching submission and permission have been checked.
 
 ## Current structure
 
 - `app/Controllers/`: public controllers plus admin authentication,
   dashboard, administrator management, CMS content controllers and
-  role-protected future-module endpoints.
+  separate submission-management controllers.
 - `app/Commands/`: the CLI-only first-Super-Admin provisioning command.
 - `app/Models/`: public-content queries, CMS models and the audit-log model
   used for administrator and content changes.
 - `app/Views/`: public pages and shared public layout, plus CMS editors,
   previews, media views, authentication, dashboard, account-management and
-  future-module views.
+  submission-management views.
 - `app/Config/`: framework configuration, routes, filters and database groups.
 - `app/Database/Migrations/`: the core schema and additive CMS publishing
-  migration; Shield and Settings migrations are supplied by their Composer
+  and submission migrations; Shield and Settings migrations are supplied by their Composer
   packages.
 - `app/Filters/`: Shield's session, permission, CSRF, and authentication-rate
   filters are configured through the framework and Shield.
@@ -77,6 +83,13 @@ media, and Super Admins have all CMS permissions. Security Services Officers
 cannot access these CMS or college modules. CMS records are audited through
 the existing audit log.
 
+Admissions Officers can view and manage applications and College enquiries;
+Security Services Officers can view and manage only Security Services
+enquiries. Content Managers have neither submission permission. Super Admins
+have both. Each operation checks its permission, and note and audit queries are
+scoped by both entity type and record ID. Status and note writes are
+transactional with their audit entries. No submitted records are deleted.
+
 ## Design constraints
 
 - Keep request handling in controllers, not views.
@@ -84,7 +97,7 @@ the existing audit log.
   introduced.
 - Keep public content sections controlled and reusable; do not add an
   unrestricted page builder.
-- Keep public submission storage, confirmation and future administration
+- Keep public submission storage, confirmation and administration
   separate for applications, College enquiries and Security Services
   enquiries.
 - Keep credentials in the ignored environment file, never in `public/`.

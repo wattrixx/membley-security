@@ -37,22 +37,24 @@ class Dashboard extends AdminBaseController
 
         $collegeModules = [
             ['college.courses.view', 'Courses', 'courses', 'admin.cms.courses'],
-            ['college.applications.view', 'Applications', 'applications', null],
         ];
 
         foreach ($collegeModules as [$permission, $label, $table, $route]) {
             if ($user->can($permission)) {
-                $cards[] = $route === null
-                    ? $this->futureCard($label, $this->countTable($table))
-                    : $this->moduleCard($label, $this->countTable($table), url_to($route));
+                $cards[] = $this->moduleCard($label, $this->countTable($table), url_to($route));
             }
         }
 
+        if ($user->can('college.applications.view')) {
+            $cards[] = $this->submissionCard('Total applications', 'applications', [], 'admin.applications');
+            $cards[] = $this->submissionCard('New applications', 'applications', ['status' => 'received'], 'admin.applications');
+            $cards[] = $this->submissionCard('Applications awaiting review', 'applications', [], 'admin.applications', ['received', 'under_review']);
+        }
+        if ($user->can('college.enquiries.view')) {
+            $cards[] = $this->submissionCard('College enquiries awaiting attention', 'enquiries', ['enquiry_type' => 'college'], 'admin.college.enquiries', ['new', 'in_progress', 'awaiting_response']);
+        }
         if ($user->can('security.enquiries.view')) {
-            $cards[] = $this->futureCard(
-                'Security Services enquiries',
-                $this->countSecurityEnquiries(),
-            );
+            $cards[] = $this->submissionCard('New Security Services enquiries', 'security_enquiries', ['status' => 'new'], 'admin.security.enquiries');
         }
 
         $groupTitles = config('AuthGroups')->groups;
@@ -69,17 +71,18 @@ class Dashboard extends AdminBaseController
         ]);
     }
 
-    /**
-     * @return array{label: string, count: int, description: string, href: null, available: false}
-     */
-    private function futureCard(string $label, int $count): array
+    private function submissionCard(string $label, string $table, array $where, string $route, array $statuses = []): array
     {
+        $query = db_connect(config('Auth')->DBGroup)->table($table)->where($where);
+        if ($statuses !== []) {
+            $query->whereIn('status', $statuses);
+        }
         return [
             'label'       => $label,
-            'count'       => $count,
-            'description' => 'Management will be added in a later milestone.',
-            'href'        => null,
-            'available'   => false,
+            'count'       => (int) $query->countAllResults(),
+            'description' => 'Open the appropriate submission queue.',
+            'href'        => url_to($route),
+            'available'   => true,
         ];
     }
 
@@ -114,10 +117,4 @@ class Dashboard extends AdminBaseController
             ->countAllResults();
     }
 
-    private function countSecurityEnquiries(): int
-    {
-        return (int) db_connect(config('Auth')->DBGroup)
-            ->table('security_enquiries')
-            ->countAllResults();
-    }
 }

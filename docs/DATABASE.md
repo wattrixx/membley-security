@@ -10,6 +10,8 @@ migrations are applied in batch 2. The additive
 The additive `2026-11-14-090000_AddPublicSubmissionWorkflows` migration is
 applied in batch 4; it adds public submission fields and a dedicated Security
 Services enquiry table. The database also has CodeIgniter's `migrations` table.
+The additive `2026-11-15-090000_AddSubmissionNotes` migration is applied locally
+as batch 5; it creates the internal `submission_notes` table.
 
 The public website reads published content from `pages`, `courses` and
 `posts`. The admin foundation uses Shield's user and authorization tables and
@@ -32,6 +34,7 @@ was added in Milestone 4.
 | `employer_training_requests` | Organisation and training-request fields. |
 | `site_settings` | Unique setting keys and optional text values. |
 | `audit_logs` | Optional user reference, action, entity and request details. |
+| `submission_notes` | Append-only internal note, workflow type, record ID, author, optional follow-up date and creation date. |
 
 Shield adds `users`, `auth_identities`, `auth_logins`, `auth_token_logins`,
 `auth_remember_tokens`, `auth_groups_users` and `auth_permissions_users`.
@@ -57,6 +60,18 @@ The Milestone 6 migration adds `applications.country` and
 Security Services enquiries never use that table. There is no shared public
 submission table or workflow. Existing records, if any, retain the default
 unacknowledged privacy value.
+
+Milestone 7 does not combine submission tables or change existing status
+columns. `submission_notes` has an index on `(entity_type, entity_id)`; each
+note is read only through its authorized workflow and record. The existing
+`audit_logs` table records status changes and note creation without note text
+or applicant details. There are no foreign keys enforcing the polymorphic note
+reference; application-level checks enforce the mapping.
+
+Security enquiries have no stored reference column. The admin interface uses
+`SEC-<id>` as an internal, sequential display/search reference; it is not a
+secret, public tracking token or authorization mechanism. Application
+references continue to use their existing random `application_number`.
 
 ## Public-content rules
 
