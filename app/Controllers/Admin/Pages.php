@@ -2,6 +2,7 @@
 
 namespace App\Controllers\Admin;
 
+use App\Content\AboutContent;
 use App\Models\MediaModel;
 use App\Models\PageModel;
 use CodeIgniter\Exceptions\PageNotFoundException;
@@ -19,9 +20,7 @@ class Pages extends CmsController
     private const MANAGED_PAGES = [
         'about' => [
             'title' => 'About the Group',
-            'content' => 'Membley Security Group is the shared website brand for Membley College of Security Studies and Membley Investigations and Surveillance Company.' . "\n\n"
-                . 'The College handles courses, applications and employer training. The Security Services company handles investigation, protection and security-service enquiries.' . "\n\n"
-                . 'Approved company history, vision and mission statements have not been provided for publication. They can be added here after confirmation.',
+            'content' => '',
             'meta_title' => 'About the Group | Membley Security Group',
             'meta_description' => 'Learn how Membley Security Group connects its College and Security Services teams.',
         ],
@@ -45,8 +44,9 @@ class Pages extends CmsController
 
     public function index(): string
     {
+        $managedPages = $this->managedPages();
         $pages = (new PageModel())
-            ->whereIn('slug', array_keys(self::MANAGED_PAGES))
+            ->whereIn('slug', array_keys($managedPages))
             ->findAll();
         $saved = [];
         foreach ($pages as $page) {
@@ -54,7 +54,7 @@ class Pages extends CmsController
         }
 
         $records = [];
-        foreach (self::MANAGED_PAGES as $slug => $defaults) {
+        foreach ($managedPages as $slug => $defaults) {
             $records[] = array_merge(
                 [
                     'slug'       => $slug,
@@ -79,7 +79,7 @@ class Pages extends CmsController
         $record = (new PageModel())->where('slug', $slug)->first();
 
         if ($record === null) {
-            $record = array_merge(self::MANAGED_PAGES[$slug], [
+            $record = array_merge($this->managedPages()[$slug], [
                 'slug'               => $slug,
                 'status'             => 'draft',
                 'published_at'       => null,
@@ -233,6 +233,14 @@ class Pages extends CmsController
         if (! array_key_exists($slug, self::MANAGED_PAGES)) {
             throw PageNotFoundException::forPageNotFound('This system page is not available for CMS editing.');
         }
+    }
+
+    private function managedPages(): array
+    {
+        $pages = self::MANAGED_PAGES;
+        $pages['about']['content'] = AboutContent::editorContent();
+
+        return $pages;
     }
 
     private function mediaIdForPath(?string $path): string

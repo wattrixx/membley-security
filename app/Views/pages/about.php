@@ -54,23 +54,44 @@
 
 <section class="section section-paper">
     <div class="container content-grid">
-        <div>
-            <span class="eyebrow">The emblem</span>
-            <h2>Truth. Intelligence. Discretion.</h2>
-            <p>
-                These words appear in the supplied Group emblem. They are
-                presented here as part of its visual identity, not as a
-                substitute for formally approved values.
-            </p>
+        <div class="content-panel">
+            <h2>Our Vision</h2>
+            <p><?= esc(\App\Content\AboutContent::VISION) ?></p>
         </div>
         <div class="content-panel">
-            <h3>Company background and statements</h3>
-            <p>
-                Approved company history, vision and mission statements have
-                not been provided for publication. They can be added here
-                after confirmation.
-            </p>
+            <h2>Our Mission</h2>
+            <p><?= esc(\App\Content\AboutContent::MISSION) ?></p>
         </div>
+    </div>
+</section>
+
+<section class="section">
+    <div class="container">
+        <div class="section-heading">
+            <h2>Our Core Values</h2>
+        </div>
+        <div class="content-grid">
+            <?php foreach (\App\Content\AboutContent::VALUES as $name => $description): ?>
+                <article class="content-panel">
+                    <h3><?= esc($name) ?></h3>
+                    <p><?= esc($description) ?></p>
+                </article>
+            <?php endforeach; ?>
+        </div>
+    </div>
+</section>
+
+<section class="section section-paper">
+    <div class="container">
+        <div class="section-heading">
+            <h2>Our Company Background</h2>
+            <p>About Membley Security &amp; College</p>
+        </div>
+        <?php foreach (\App\Content\AboutContent::BACKGROUND as $paragraph): ?>
+            <p><?= esc($paragraph) ?></p>
+        <?php endforeach; ?>
+        <h3>Truth. Intelligence. Discretion.</h3>
+        <p>These words appear in the Group emblem.</p>
     </div>
 </section>
 

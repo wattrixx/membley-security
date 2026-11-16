@@ -4,8 +4,8 @@ Items remain outstanding unless marked implemented in the current source.
 
 ## Public website
 
-- Confirm and publish company history, vision, mission, formal values,
-  admissions details and any separate organisation contact information.
+- Confirm admissions details and any separate organisation contact
+  information.
 - Populate course and news tables only with approved, explicitly published
   content; current course and post tables are empty.
 - Confirm service scope and approved descriptions before expanding public

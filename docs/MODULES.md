@@ -5,7 +5,7 @@ Status reflects the code currently in the repository.
 | Module | Status | Notes |
 | --- | --- | --- |
 | Public homepage | Implemented | Responsive hero and public featured-course/latest-news highlights. |
-| About the Group | Implemented | Approved introduction and two organisation paths; unconfirmed vision, mission and history are identified. |
+| About the Group | Implemented | Introduction, two organisation paths and supplied vision, mission, values and company background. |
 | College | Implemented | Training overview, approach, employer training and admissions guidance. |
 | Courses | Implemented | Database-backed listing and details; available and development states are separated. |
 | Admissions | Implemented | Online application form accepts only published courses currently marked available; includes one-time confirmation reference. |

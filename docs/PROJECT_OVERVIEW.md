@@ -18,10 +18,11 @@ professional training.
 
 The supplied website-content document informs the College and Security
 Services copy. Proposed fees and internal planning notes are not public.
-Official company history, vision and mission statements remain unconfirmed.
-The `courses` and `posts` tables currently have no rows, so public listings use
-empty states until content is explicitly published. Enquiry and application
-forms and the administration area are not implemented.
+The About page includes the company background, vision, mission and values
+wording supplied for publication.
+Public listings use empty states until content is explicitly published. The
+site includes separate application and enquiry forms and a role-protected
+administration area.
 
 ## Technology
 
@@ -50,8 +51,6 @@ prefers approved, organisation-specific photography.
 
 ## Current limitations
 
-Only read-only models for public pages, courses and posts exist. There are no
-administrator accounts, role checks, CMS controllers or upload handlers.
-Static public pages use approved view copy unless a matching page row is
-published with a publication date. The supplied Bootstrap setup is absent
-from the existing frontend; the site continues to use its local stylesheet.
+Static public pages use view copy unless a matching page row is published
+with a publication date. The supplied Bootstrap setup is absent from the
+existing frontend; the site continues to use its local stylesheet.
