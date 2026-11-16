@@ -42,6 +42,14 @@ $RECYCLE.BIN/
 # These should never be under version control,
 # as it poses a security risk.
 .env
+.env.*
+!.env.example
+*.pem
+*.key
+*.p12
+*.pfx
+*.sql.gz
+*.dump
 .vagrant
 Vagrantfile
 
@@ -62,6 +70,11 @@ Vagrantfile
 
 /writable/debugbar/*
 !/writable/debugbar/index.html
+
+# Uploaded media belongs in backed-up runtime storage, not Git.
+/public/uploads/media/*
+!/public/uploads/media/.htaccess
+!/public/uploads/media/index.html
 
 php_errors.log
 
