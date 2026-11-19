@@ -48,11 +48,8 @@
         <nav class="main-nav" id="mainNav" aria-label="Main navigation">
             <a href="<?= base_url('/') ?>">Home</a>
             <a href="<?= base_url('about') ?>">About the Group</a>
-            <a href="<?= base_url('college') ?>">College</a>
-            <a href="<?= base_url('college/courses') ?>">Courses</a>
-            <a href="<?= base_url('college#admissions') ?>">Admissions</a>
             <a href="<?= base_url('security-services') ?>">Security Services</a>
-            <a href="<?= base_url('news') ?>">News &amp; Updates</a>
+            <a href="<?= base_url('college') ?>">Training College</a>
             <a href="<?= base_url('contact') ?>" class="nav-contact">Contact</a>
         </nav>
     </div>
