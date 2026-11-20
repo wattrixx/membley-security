@@ -21,6 +21,9 @@ $routes->get('news', 'PublicSite::news');
 $routes->get('news/(:segment)', 'PublicSite::article/$1');
 $routes->get('security-services', 'PublicSite::securityServices');
 $routes->get('security-services/contact', 'PublicSite::securityContact');
+$routes->get('transport-logistics', 'PublicSite::transportLogistics');
+$routes->get('transport-logistics/services', 'PublicSite::transportServices');
+$routes->get('transport-logistics/enquiries', 'PublicSite::transportEnquiries');
 $routes->get('security-services/enquiry', 'PublicSubmissions::securityEnquiry', ['as' => 'security.enquiry']);
 $routes->post('security-services/enquiry', 'PublicSubmissions::submitSecurityEnquiry', ['as' => 'security.enquiry.submit']);
 

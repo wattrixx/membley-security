@@ -50,6 +50,7 @@
             <a href="<?= base_url('about') ?>">About the Group</a>
             <a href="<?= base_url('security-services') ?>">Security Services</a>
             <a href="<?= base_url('college') ?>">Training College</a>
+            <a href="<?= base_url('transport-logistics') ?>">Transport &amp; Logistics Services</a>
             <a href="<?= base_url('contact') ?>" class="nav-contact">Contact</a>
         </nav>
     </div>
@@ -74,7 +75,7 @@
                 </span>
             </a>
             <p class="footer-description">
-                Security services and professional training, brought together
+                Security services, professional training and logistics, brought together
                 under one group.
             </p>
         </div>
@@ -87,6 +88,7 @@
                 <a href="<?= base_url('college/courses') ?>">Courses</a>
                 <a href="<?= base_url('college#admissions') ?>">Admissions</a>
                 <a href="<?= base_url('security-services') ?>">Security Services</a>
+                <a href="<?= base_url('transport-logistics') ?>">Transport &amp; Logistics Services</a>
                 <a href="<?= base_url('news') ?>">News &amp; Updates</a>
                 <a href="<?= base_url('contact') ?>">Contact</a>
             </nav>

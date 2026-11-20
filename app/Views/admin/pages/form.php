@@ -2,7 +2,7 @@
 
 <?= $this->section('content') ?>
 <header class="admin-page-heading">
-    <span class="admin-eyebrow">Fixed page: /<?= esc($slug) ?></span>
+    <span class="admin-eyebrow">Fixed page: /<?= esc(\App\Content\TransportContent::PAGES[$slug]['path'] ?? $slug) ?></span>
     <h1>Edit <?= esc($record['title']) ?></h1>
     <p>The route is locked. Content is plain text; executable code and arbitrary HTML cannot be published.</p>
 </header>

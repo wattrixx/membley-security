@@ -44,10 +44,13 @@ details: near-black `#101018`, antique gold `#B89860` and light gold `#E2CEA0`.
 The emblem is displayed with its original square aspect ratio and is also used
 for the multi-resolution site favicon.
 
-The homepage photos are illustrative stock imagery stored locally. They do
+The homepage and transport photos are illustrative stock imagery stored locally. They do
 not represent confirmed Membley sites, staff, equipment or operations.
 The images are sourced from Unsplash and should be replaced if the client
 prefers approved, organisation-specific photography.
+Transport sources: [container port](https://images.unsplash.com/photo-1494412519320-aa613dfb7738)
+and [warehouse](https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d);
+see the [Unsplash licence](https://unsplash.com/license).
 
 ## Current limitations
 

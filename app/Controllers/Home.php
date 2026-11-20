@@ -21,8 +21,8 @@ class Home extends BaseController
         );
 
         return view('home/index', [
-            'pageTitle' => 'Membley Security Group | Security & Professional Training',
-            'metaDescription' => 'Discover Membley Security Group, its professional training and security services.',
+            'pageTitle' => 'Membley Security Group | Security, Training & Logistics',
+            'metaDescription' => 'Discover Membley Security Group, its security, training and transport and logistics services.',
             'preloadImage' => 'assets/images/security-technology.jpg',
             'featuredCourses' => $featuredCourses,
             'latestPosts' => $latestPosts,

@@ -2,6 +2,7 @@
 
 namespace App\Controllers;
 
+use App\Content\TransportContent;
 use App\Models\CourseModel;
 use App\Models\AnnouncementModel;
 use App\Models\PageModel;
@@ -41,6 +42,34 @@ class PublicSite extends BaseController
             'pages/security_services',
             'Security Services | Membley Security Group',
             'Contact Membley Investigations and Surveillance Company about security service enquiries.',
+        );
+    }
+
+    public function transportLogistics(): string
+    {
+        return $this->transportPage('transport-logistics');
+    }
+
+    public function transportServices(): string
+    {
+        return $this->transportPage('transport-logistics-services');
+    }
+
+    public function transportEnquiries(): string
+    {
+        return $this->transportPage('transport-logistics-enquiries');
+    }
+
+    private function transportPage(string $slug): string
+    {
+        $page = TransportContent::PAGES[$slug];
+
+        return $this->renderStaticPage(
+            $slug,
+            'pages/transport',
+            $page['meta_title'],
+            $page['meta_description'],
+            ['transportPage' => $page],
         );
     }
 
@@ -186,11 +215,12 @@ class PublicSite extends BaseController
         string $view,
         string $pageTitle,
         string $metaDescription,
+        array $data = [],
     ): string {
         $page = (new PageModel())->findPublishedPageBySlug($slug);
 
         if ($page === null || trim($page['content']) === '') {
-            return $this->renderPage($view, $pageTitle, $metaDescription);
+            return $this->renderPage($view, $pageTitle, $metaDescription, $data);
         }
 
         $page['featured_image_path'] = $this->publicImagePath($page['featured_image'] ?? null);

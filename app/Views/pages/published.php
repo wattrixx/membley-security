@@ -40,6 +40,25 @@
             </div>
         </div>
     </section>
+    <?php if ($page['slug'] === 'about'): ?>
+        <section class="section section-paper">
+            <div class="container section-cta">
+                <div>
+                    <h2>Transport &amp; Logistics Services</h2>
+                    <p>Explore the Group's introductory transport and logistics information. Service details are subject to confirmation.</p>
+                </div>
+                <a class="button button-dark" href="<?= base_url('transport-logistics') ?>">Explore Transport &amp; Logistics</a>
+            </div>
+        </section>
+    <?php endif; ?>
+    <?php if (isset(\App\Content\TransportContent::PAGES[$page['slug']])): ?>
+        <section class="section section-paper">
+            <div class="container">
+                <h2>Explore Transport &amp; Logistics</h2>
+                <?= view('partials/transport_navigation') ?>
+            </div>
+        </section>
+    <?php else: ?>
     <section class="section section-paper">
         <div class="container section-cta">
             <div>
@@ -56,6 +75,7 @@
             <?php endif; ?>
         </div>
     </section>
+    <?php endif; ?>
 </article>
 
 <?= $this->endSection() ?>

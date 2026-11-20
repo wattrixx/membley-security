@@ -5,11 +5,11 @@
 <section class="page-hero">
     <div class="container">
         <span class="eyebrow">About the Group</span>
-        <h1>One group. Two specialist organisations.</h1>
+        <h1>One group. Three service areas.</h1>
         <p>
             Membley Security Group is the shared website brand for Membley
             College of Security Studies and Membley Investigations and
-            Surveillance Company.
+            Surveillance Company, and Transport &amp; Logistics Services.
         </p>
     </div>
 </section>
@@ -22,7 +22,8 @@
             <p>
                 The College handles courses, applications and employer
                 training. The Security Services company handles investigation,
-                protection and security-service enquiries.
+                protection and security-service enquiries. The Group also
+                includes Transport &amp; Logistics Services.
             </p>
         </div>
 
@@ -47,6 +48,12 @@
                     service enquiries.
                 </p>
                 <a class="button button-dark" href="<?= base_url('security-services') ?>">Explore Security Services</a>
+            </article>
+            <article class="content-panel">
+                <span class="eyebrow">Transport and logistics</span>
+                <h3>Transport &amp; Logistics Services</h3>
+                <p>Explore the Group's introductory transport and logistics information. Service details are subject to confirmation.</p>
+                <a class="button button-dark" href="<?= base_url('transport-logistics') ?>">Explore Transport &amp; Logistics</a>
             </article>
         </div>
     </div>

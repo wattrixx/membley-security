@@ -5,17 +5,18 @@ Status reflects the code currently in the repository.
 | Module | Status | Notes |
 | --- | --- | --- |
 | Public homepage | Implemented | Responsive hero and public featured-course/latest-news highlights. |
-| About the Group | Implemented | Introduction, two organisation paths and supplied vision, mission, values and company background. |
+| About the Group | Implemented | Introduction, service areas and supplied vision, mission, values and company background. |
 | College | Implemented | Training overview, approach, employer training and admissions guidance. |
 | Courses | Implemented | Database-backed listing and details; available and development states are separated. |
 | Admissions | Implemented | Online application form accepts only published courses currently marked available; includes one-time confirmation reference. |
 | College enquiries | Implemented | Separate public form, storage and Admissions management workflow. |
 | Security services | Implemented | Overview and dedicated Security Services enquiry form; warns against submitting sensitive security details. |
+| Transport & Logistics | Implemented | Overview, illustrative services and enquiry-guide pages; placeholder details need client confirmation. |
 | News and updates | Implemented | Database-backed article listing, publication dates, detail routes and optional local images. |
 | Contact | Implemented | General, College and Security Services pages use the verified phone/map and link to separate enquiry forms. |
 | Course management | Implemented | Admissions Officers and Super Admins can search, filter, paginate, create, edit, preview and publish courses. Availability (`available`, `proposed`, `development`) is separate from publication state; fees require explicit verification. |
 | News and blog management | Implemented | Content Managers and Super Admins can create, edit, preview, schedule and publish articles with category, author label, SEO metadata and optional featured image. |
-| Fixed page management | Implemented | Content Managers and Super Admins can edit only the existing About, College and Security Services pages. Content is plain text; system routes and executable markup are not editable. |
+| Fixed page management | Implemented | Content Managers and Super Admins can edit About, College, Security Services and the three Transport & Logistics pages. Content is plain text; system routes and executable markup are not editable. |
 | Announcements | Implemented | Content Managers and Super Admins can create, preview, schedule, publish and archive announcements with an optional image. |
 | Media library | Implemented | Content Managers and Super Admins can upload JPEG, PNG and WebP files up to 5 MB, update alt text and delete unreferenced media. Course editors can select existing media where supported. |
 | Administration authentication | Implemented | Shield session login/logout, CSRF, login rate limiting and role/permission filters. No public registration. |
@@ -29,6 +30,15 @@ Status reflects the code currently in the repository.
 The public site does not publish proposed fees, unconfirmed credentials,
 internal planning notes or undated/future content. Security Services Officers
 have no course, application, College enquiry or CMS content permissions.
+
+The transport pages are managed under **Pages** in the admin dashboard.
+Each page has its own title, text, SEO metadata, publication state and optional
+featured media. Save as draft or preview before publishing; until a published
+CMS record exists, the illustrative public template is shown. Publishing
+replaces the template, including its stock image; select an uploaded media
+image to display one on the published page. The homepage carousel and its
+image are not editable through the page editor. The enquiry guide links to
+the existing general contact page, not a new submission workflow.
 
 ### Submission workflows
 

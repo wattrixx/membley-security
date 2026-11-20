@@ -12,7 +12,7 @@
             <article class="hero-slide is-active"
                      data-slide
                      aria-hidden="false"
-                     aria-label="1 of 3">
+                     aria-label="1 of 4">
                 <img class="hero-image"
                      src="<?= base_url('assets/images/security-technology.jpg') ?>"
                      alt=""
@@ -22,10 +22,10 @@
                      decoding="async">
                 <div class="hero-copy">
                     <span class="eyebrow">Membley Security Group</span>
-                    <h1>Security and training, <span>from one group.</span></h1>
+                    <h1>Security, training and logistics, <span>from one group.</span></h1>
                     <p>
                         Explore the work of Membley Security Group and its
-                        College through clear, current information.
+                        College and Transport &amp; Logistics Services through clear, current information.
                     </p>
                     <div class="hero-actions">
                         <a class="button button-primary" href="#security-services">Explore security services</a>
@@ -37,7 +37,7 @@
             <article class="hero-slide"
                      data-slide
                      aria-hidden="true"
-                     aria-label="2 of 3"
+                     aria-label="2 of 4"
                      inert>
                 <img class="hero-image"
                      src="<?= base_url('assets/images/training-campus.jpg') ?>"
@@ -63,7 +63,7 @@
             <article class="hero-slide"
                      data-slide
                      aria-hidden="true"
-                     aria-label="3 of 3"
+                     aria-label="3 of 4"
                      inert>
                 <img class="hero-image"
                      src="<?= base_url('assets/images/hero-city.jpg') ?>"
@@ -85,6 +85,27 @@
                     </div>
                 </div>
             </article>
+            <article class="hero-slide"
+                     data-slide
+                     aria-hidden="true"
+                     aria-label="4 of 4"
+                     inert>
+                <img class="hero-image"
+                     src="<?= base_url('assets/images/transport-port.jpg') ?>"
+                     alt=""
+                     width="1600"
+                     height="1067"
+                     loading="lazy"
+                     decoding="async">
+                <div class="hero-copy">
+                    <span class="eyebrow">Transport &amp; Logistics Services</span>
+                    <h1>Connecting journeys <span>and possibilities.</span></h1>
+                    <p>Explore illustrative transport and logistics information and stock photography. Services and availability are subject to confirmation.</p>
+                    <div class="hero-actions">
+                        <a class="button button-primary" href="<?= base_url('transport-logistics') ?>">Explore Transport &amp; Logistics</a>
+                    </div>
+                </div>
+            </article>
         </div>
 
         <div class="hero-controls" role="group" aria-label="Carousel controls">
@@ -103,6 +124,11 @@
                         type="button"
                         data-slide-to="2"
                         aria-label="Show slide 3"
+                        aria-current="false"></button>
+                <button class="carousel-dot"
+                        type="button"
+                        data-slide-to="3"
+                        aria-label="Show slide 4"
                         aria-current="false"></button>
             </div>
             <button class="carousel-control"
@@ -155,11 +181,11 @@
         </div>
         <div class="intro-copy">
             <span class="eyebrow">About the Group</span>
-            <h2>One group bringing security and professional training together.</h2>
+            <h2>One group bringing security, training and logistics together.</h2>
             <p>
                 Membley Security Group brings together security services and
-                professional training. This website is being developed to make
-                information about the Group, its College and its work easier to find.
+                professional training and Transport &amp; Logistics Services.
+                This website makes information about the Group easier to find.
             </p>
             <p>
                 Some programme details are still being confirmed. We will

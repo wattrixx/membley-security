@@ -12,7 +12,7 @@ application.
    to `Home` and `PublicSite`.
 2. `Home` renders the homepage and queries public featured courses and recent
    posts.
-3. `PublicSite` renders the About, College, Security Services, Courses, News
+3. `PublicSite` renders the About, College, Security Services, Transport & Logistics, Courses, News
    and Contact pages.
 4. `CourseModel`, `PostModel` and `PageModel` query only content that meets
    the public publication rules.
@@ -59,7 +59,7 @@ application.
 
 Course, post and announcement public listings use the existing tables and
 exclude draft, archived, future and otherwise ineligible records. The fixed
-About, College and Security Services pages use controlled views, with a
+About, College, Security Services and the three Transport & Logistics pages use controlled views, with a
 published row from `pages` able to override a matching allowlisted slug.
 Database content is escaped and rendered as text; stored markup is not
 executed. College applications use `applications`, College enquiries use the

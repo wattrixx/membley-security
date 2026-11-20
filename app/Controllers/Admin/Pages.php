@@ -3,6 +3,7 @@
 namespace App\Controllers\Admin;
 
 use App\Content\AboutContent;
+use App\Content\TransportContent;
 use App\Models\MediaModel;
 use App\Models\PageModel;
 use CodeIgniter\Exceptions\PageNotFoundException;
@@ -142,7 +143,7 @@ class Pages extends CmsController
             'previewContent'  => $data['content'],
             'previewImage'    => $data['featured_image'],
             'previewMetadata' => [
-                'Page path'   => '/' . $slug,
+                'Page path'   => '/' . (TransportContent::PAGES[$slug]['path'] ?? $slug),
                 'Status'      => ucfirst($data['status']),
                 'Publication' => $data['published_at'],
             ],
@@ -230,7 +231,7 @@ class Pages extends CmsController
 
     private function assertManagedSlug(string $slug): void
     {
-        if (! array_key_exists($slug, self::MANAGED_PAGES)) {
+        if (! array_key_exists($slug, $this->managedPages())) {
             throw PageNotFoundException::forPageNotFound('This system page is not available for CMS editing.');
         }
     }
@@ -239,6 +240,14 @@ class Pages extends CmsController
     {
         $pages = self::MANAGED_PAGES;
         $pages['about']['content'] = AboutContent::editorContent();
+        foreach (TransportContent::PAGES as $slug => $page) {
+            $pages[$slug] = [
+                'title' => $page['title'],
+                'content' => $page['content'],
+                'meta_title' => $page['meta_title'],
+                'meta_description' => $page['meta_description'],
+            ];
+        }
 
         return $pages;
     }

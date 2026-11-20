@@ -75,7 +75,8 @@ references continue to use their existing random `application_number`.
 
 ## Public-content rules
 
-- Fixed pages (`about`, `college`, `security-services`) are overridden only by
+- Fixed pages (`about`, `college`, `security-services`, `transport-logistics`,
+  `transport-logistics-services`, `transport-logistics-enquiries`) are overridden only by
   a matching `pages` row with `status = 'published'`, a non-future
   `published_at`, and non-empty content. Unpublished rows are ignored.
 - Courses require `publication_status = 'published'`, a non-future
@@ -88,9 +89,10 @@ references continue to use their existing random `application_number`.
 - News articles and announcements require published state and a non-future
   publication date. Announcement start/end dates further limit visibility.
   Detail routes use the same publication rules as listings.
-- Fixed-page editor writes are restricted to `about`, `college` and
-  `security-services`; the public template only overrides those known routes
-  with published content.
+- Fixed-page editor writes are restricted to the listed slugs. The transport
+  service and enquiry slugs map to `/transport-logistics/services` and
+  `/transport-logistics/enquiries`; only published content overrides the
+  matching template.
 - Queries use CodeIgniter Models and Query Builder predicates; route slugs are
   bound as values. Database text is rendered as escaped plain text, not HTML.
 - Featured images are rendered only for existing local `assets/images/` or
