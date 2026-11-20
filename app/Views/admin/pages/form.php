@@ -21,6 +21,9 @@
 
     <label for="pageContent">Page content</label>
     <textarea id="pageContent" name="content" rows="14" maxlength="50000" required><?= esc($record['content']) ?></textarea>
+    <?php if ($slug === 'transport-logistics'): ?>
+        <p class="admin-form-hint">For this page, put <code>## Section heading</code> or <code>### Card heading</code> on its own line, with a blank line before and after it. Other text is shown as paragraphs.</p>
+    <?php endif; ?>
 
     <label for="pageImage">Featured image (optional)</label>
     <select id="pageImage" name="featured_media_id">

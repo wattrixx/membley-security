@@ -11,9 +11,8 @@ Items remain outstanding unless marked implemented in the current source.
 - Confirm service scope and approved descriptions before expanding public
   claims. Keep proposed fees and internal planning notes private.
 - Review image choices and final branding with the client.
-- Confirm Transport & Logistics company details, service scope, availability,
-  contact arrangements and approved imagery; the current text and photos are
-  explicitly illustrative.
+- Confirm Transport & Logistics operational capacity, coverage, contact
+  arrangements and approved imagery; stock photos are illustrative.
 - Have the organisation approve the public Privacy Notice, including a
   retention schedule and dedicated privacy contact, before production form use.
 - Correct the pre-existing homepage and Security Services default page copy

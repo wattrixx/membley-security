@@ -5,15 +5,24 @@
         <div class="container">
             <span class="eyebrow">Membley Security Group</span>
             <h1><?= esc($transportPage['title']) ?></h1>
-            <p>Transport and logistics information from the Group.</p>
+            <p>Transport, logistics and supply chain solutions from the Group.</p>
+            <a class="button button-primary" href="<?= base_url('contact') ?>">Discuss your requirements</a>
         </div>
     </header>
     <section class="section">
-        <div class="container article-content">
-            <img class="detail-image" src="<?= esc(base_url($transportPage['image']), 'attr') ?>"
-                 alt="<?= esc($transportPage['alt'], 'attr') ?>" width="1600" height="1067" loading="lazy" decoding="async">
-            <div class="placeholder-note"><p>Illustrative information and stock photography. Services and images are subject to confirmation.</p></div>
-            <div class="prose-copy"><?= nl2br(esc($transportPage['content'])) ?></div>
+        <div class="container <?= $transportOverview ? 'transport-body' : 'article-content' ?>">
+            <?php if (! empty($transportPage['image'])): ?>
+                <img class="detail-image transport-image" src="<?= esc(base_url($transportPage['image']), 'attr') ?>"
+                     alt="<?= esc($transportPage['alt'], 'attr') ?>" loading="lazy" decoding="async">
+                <?php if (str_starts_with($transportPage['image'], 'assets/images/transport-')): ?>
+                    <p class="transport-image-caption">Stock photography for illustration.</p>
+                <?php endif; ?>
+            <?php endif; ?>
+            <?php if ($transportOverview): ?>
+                <?= view('partials/transport_content', ['content' => $transportPage['content']]) ?>
+            <?php else: ?>
+                <div class="prose-copy"><?= nl2br(esc($transportPage['content'])) ?></div>
+            <?php endif; ?>
         </div>
     </section>
     <section class="section section-paper">

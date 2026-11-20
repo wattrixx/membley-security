@@ -21,7 +21,13 @@
         </dl>
     <?php endif; ?>
     <?php if (! empty($previewContent)): ?>
-        <div class="admin-preview-copy"><?= nl2br(esc($previewContent)) ?></div>
+        <div class="admin-preview-copy">
+            <?php if (! empty($previewTransportContent)): ?>
+                <?= view('partials/transport_content', ['content' => $previewContent]) ?>
+            <?php else: ?>
+                <?= nl2br(esc($previewContent)) ?>
+            <?php endif; ?>
+        </div>
     <?php endif; ?>
     <a class="admin-button admin-button-light" href="<?= url_to('admin.dashboard') ?>">Return to dashboard</a>
 </section>

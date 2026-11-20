@@ -11,7 +11,7 @@ Status reflects the code currently in the repository.
 | Admissions | Implemented | Online application form accepts only published courses currently marked available; includes one-time confirmation reference. |
 | College enquiries | Implemented | Separate public form, storage and Admissions management workflow. |
 | Security services | Implemented | Overview and dedicated Security Services enquiry form; warns against submitting sensitive security details. |
-| Transport & Logistics | Implemented | Overview, illustrative services and enquiry-guide pages; placeholder details need client confirmation. |
+| Transport & Logistics | Implemented | Overview based on supplied service content, services summary and enquiry guide. Availability and arrangements are assessed per engagement. |
 | News and updates | Implemented | Database-backed article listing, publication dates, detail routes and optional local images. |
 | Contact | Implemented | General, College and Security Services pages use the verified phone/map and link to separate enquiry forms. |
 | Course management | Implemented | Admissions Officers and Super Admins can search, filter, paginate, create, edit, preview and publish courses. Availability (`available`, `proposed`, `development`) is separate from publication state; fees require explicit verification. |
@@ -34,11 +34,15 @@ have no course, application, College enquiry or CMS content permissions.
 The transport pages are managed under **Pages** in the admin dashboard.
 Each page has its own title, text, SEO metadata, publication state and optional
 featured media. Save as draft or preview before publishing; until a published
-CMS record exists, the illustrative public template is shown. Publishing
+CMS record exists, the public template is shown. Publishing
 replaces the template, including its stock image; select an uploaded media
 image to display one on the published page. The homepage carousel and its
 image are not editable through the page editor. The enquiry guide links to
 the existing general contact page, not a new submission workflow.
+The overview uses `## Section heading` and `### Card heading` on their own
+lines, separated from surrounding paragraphs by blank lines. Both preview and
+the public page render these headings; other content remains escaped plain
+text. Existing published CMS content takes precedence over template updates.
 
 ### Submission workflows
 

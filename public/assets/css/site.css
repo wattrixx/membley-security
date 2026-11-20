@@ -1165,6 +1165,41 @@ img {
     margin-top: .5rem;
 }
 
+.transport-image {
+    width: 100%;
+    max-height: 480px;
+    object-fit: cover;
+}
+
+.transport-image-caption {
+    margin: .5rem 0 0;
+    color: var(--muted);
+    font-size: .85rem;
+}
+
+.transport-section {
+    margin-top: clamp(2.5rem, 5vw, 4.5rem);
+}
+
+.transport-section h2 {
+    max-width: 800px;
+    color: var(--brand-ink);
+    font-family: var(--font-heading);
+    font-size: clamp(2rem, 4vw, 3.25rem);
+    font-weight: 500;
+    line-height: 1.15;
+}
+
+.transport-section > p {
+    max-width: 850px;
+    color: var(--muted);
+    line-height: 1.8;
+}
+
+.transport-section .content-grid {
+    margin-top: 1.75rem;
+}
+
 .section-cta {
     display: flex;
     align-items: center;

@@ -100,7 +100,7 @@
                 <div class="hero-copy">
                     <span class="eyebrow">Transport &amp; Logistics Services</span>
                     <h1>Connecting journeys <span>and possibilities.</span></h1>
-                    <p>Explore illustrative transport and logistics information and stock photography. Services and availability are subject to confirmation.</p>
+                    <p>Explore transport, freight coordination and logistics solutions. Services and availability are confirmed for each engagement.</p>
                     <div class="hero-actions">
                         <a class="button button-primary" href="<?= base_url('transport-logistics') ?>">Explore Transport &amp; Logistics</a>
                     </div>

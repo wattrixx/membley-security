@@ -142,6 +142,7 @@ class Pages extends CmsController
             'previewExcerpt'  => $data['meta_description'],
             'previewContent'  => $data['content'],
             'previewImage'    => $data['featured_image'],
+            'previewTransportContent' => $slug === 'transport-logistics',
             'previewMetadata' => [
                 'Page path'   => '/' . (TransportContent::PAGES[$slug]['path'] ?? $slug),
                 'Status'      => ucfirst($data['status']),

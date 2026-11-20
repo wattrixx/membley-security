@@ -69,7 +69,7 @@ class PublicSite extends BaseController
             'pages/transport',
             $page['meta_title'],
             $page['meta_description'],
-            ['transportPage' => $page],
+            ['transportPage' => $page, 'transportOverview' => $slug === 'transport-logistics'],
         );
     }
 
@@ -229,6 +229,22 @@ class PublicSite extends BaseController
             : $this->imageAlt($page['featured_image_path']);
         $storedTitle = trim((string) ($page['meta_title'] ?? ''));
         $storedDescription = trim((string) ($page['meta_description'] ?? ''));
+
+        if ($slug === 'transport-logistics') {
+            $transportPage = array_merge(TransportContent::PAGES[$slug], [
+                'title' => $page['title'],
+                'content' => $page['content'],
+                'image' => $page['featured_image_path'],
+                'alt' => $page['featured_image_alt'],
+            ]);
+
+            return $this->renderPage(
+                'pages/transport',
+                $storedTitle !== '' ? $storedTitle : $page['title'],
+                $storedDescription !== '' ? $storedDescription : $metaDescription,
+                ['transportPage' => $transportPage, 'transportOverview' => true],
+            );
+        }
 
         return $this->renderPage(
             'pages/published',
